@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="pageTitle">Ilmiy elektron jurnal</title>
-    <meta name="description" content="Lorem ipsum dolor sit amet.">
+    <title data-i18n="pageTitle">O'zDSMI</title>
+    <meta name="description" content="O'zDSMI uchun klassik jurnal sayti ko'rinishidagi sahifa.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css?v=6">
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/src/styles/style.css">
 </head>
 <body>
     <button class="mobile-nav-toggle" type="button" id="mobile-nav-toggle" aria-label="Menyu">
@@ -17,281 +17,391 @@
         <span></span>
     </button>
 
-    <div class="page-shell">
-        <aside class="sidebar" id="sidebar">
-            <div class="sidebar-top">
-                <h2 data-i18n="sidebarTitle">Ilmiy nashr</h2>
-                <p data-i18n="sidebarSubtitle">Lorem ipsum dolor sit amet</p>
+    <div class="page-background" aria-hidden="true"></div>
+
+    <div class="site-shell">
+        <header class="masthead">
+            <div class="masthead-top">
+                <div class="identity">
+                    <a class="identity-logo" href="./" aria-label="Sahifani yangilash">
+                        <img src="assets/logo.png" alt="O'zDSMI logo">
+                    </a>
+                    <div class="identity-copy">
+                        <h1 data-i18n="pageTitle">O'zDSMI</h1>
+                        <p class="identity-meta">ISSN (O) XXXX-XXXX, ISSN (P) XXXX-XXXX</p>
+                        <p class="identity-subtitle" data-i18n="heroSubtitle"></p>
+                    </div>
+                </div>
+
+                <div class="header-tools">
+                    <div class="language-switcher" aria-label="Til tanlash">
+                        <button class="language-button active" type="button" data-lang="uz">UZ</button>
+                        <button class="language-button" type="button" data-lang="ru">RU</button>
+                        <button class="language-button" type="button" data-lang="en">EN</button>
+                    </div>
+                </div>
             </div>
 
-            <div class="language-switcher" aria-label="Til tanlash">
-                <button class="language-button active" type="button" data-lang="uz">UZ</button>
-                <button class="language-button" type="button" data-lang="ru">RU</button>
-                <button class="language-button" type="button" data-lang="en">EN</button>
+            <div class="masthead-banner">
+                <div class="banner-art"></div>
+                <div class="banner-copy">
+                    
+                    <h2 data-i18n="heroTitle">Tadqiqotlar, maqolalar va ilmiy muloqot uchun zamonaviy jurnal makoni</h2>
+                    <p data-i18n="heroDescription">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
             </div>
 
-            <nav class="sidebar-nav" aria-label="Jurnal bo'limlari">
+            <nav class="top-nav" aria-label="Jurnal bo'limlari" id="sidebar">
                 <button class="nav-button active" type="button" data-tab="jurnal-haqida" data-i18n="navAbout">Jurnal haqida</button>
                 <button class="nav-button" type="button" data-tab="talablar" data-i18n="navRequirements">Talablar</button>
                 <button class="nav-button" type="button" data-tab="arxiv" data-i18n="navArchive">Arxiv</button>
                 <button class="nav-button" type="button" data-tab="redkollegiya" data-i18n="navEditorial">Redkollegiya</button>
+
+                <form class="nav-search" action="#" method="get">
+                    <input type="search" placeholder="Topish" aria-label="Topish">
+                    <button type="submit">⌕</button>
+                </form>
             </nav>
-        </aside>
 
-        <main class="content">
-            <header class="content-header">
-                <h1 data-i18n="pageTitle">Ilmiy elektron jurnal</h1>
-                <div class="breadcrumb" aria-label="Breadcrumb">
-                    <span data-i18n="breadcrumbHome">Asosiy sahifa</span>
-                    <span>/</span>
-                    <span data-i18n="breadcrumbJournal">Jurnal</span>
-                    <span>/</span>
-                    <strong id="breadcrumb-current" data-i18n="navAbout">Jurnal haqida</strong>
-                </div>
-            </header>
+            <div class="notice-bar">
+                <span data-i18n="noticeText">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span>
+            </div>
+        </header>
 
-            <section class="tab-panel active" id="jurnal-haqida" data-label-key="navAbout" data-label="Jurnal haqida">
-                <div class="panel-intro">
+        <div class="page-shell">
+            <main class="content">
+                <header class="content-header">
                     <div>
-                        <h2 data-i18n="aboutTitle">Jurnal faoliyati va maqsadi</h2>
+                        <h2 class="content-title" data-i18n="pageTitle">O'zDSMI</h2>
+                        <div class="breadcrumb" aria-label="Breadcrumb">
+                            <span data-i18n="breadcrumbHome">Asosiy sahifa</span>
+                            <span>/</span>
+                            <span data-i18n="breadcrumbJournal">Jurnal</span>
+                            <span>/</span>
+                            <strong id="breadcrumb-current" data-i18n="navAbout">Jurnal haqida</strong>
+                        </div>
                     </div>
-                    <p data-i18n="aboutIntro">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vitae libero non neque
-                        facilisis gravida.
-                    </p>
-                </div>
+                </header>
 
-                <div class="stat-grid">
-                    <article class="stat-card">
-                        <span data-i18n="periodicity">Davriyligi</span>
-                        <strong data-i18n="loremShort">Lorem ipsum</strong>
-                    </article>
-                    <article class="stat-card">
-                        <span data-i18n="languages">Tillar</span>
-                        <strong data-i18n="loremShort">Lorem ipsum</strong>
-                    </article>
-                    <article class="stat-card">
-                        <span data-i18n="format">Nashr formati</span>
-                        <strong data-i18n="loremShort">Lorem ipsum</strong>
-                    </article>
-                </div>
+                <section class="tab-panel active" id="jurnal-haqida" data-label-key="navAbout" data-label="Jurnal haqida">
+                    <div class="journal-layout">
+                        <div class="journal-main">
+                            <h3 class="section-title" data-i18n="aboutTitle">Jurnal faoliyati va maqsadi</h3>
+                            <p class="lead-paragraph" data-i18n="aboutIntro">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-                <div class="panel-copy">
-                    <p data-i18n="aboutCopyOne">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse vitae magna sed
-                        lectus efficitur luctus.
-                    </p>
-                    <p data-i18n="loremSentence">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                </div>
+                            <div class="text-block">
+                                <p data-i18n="aboutCopyOne">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                                <p data-i18n="aboutCopyTwo">Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            </div>
 
-                <div class="info-list">
-                    <div class="info-item">
-                        <span data-i18n="founder">Muassis</span>
-                        <strong data-i18n="loremShort">Lorem ipsum</strong>
+                            <div class="text-summary">
+                                <p><strong data-i18n="periodicity">Davriyligi</strong>: <span data-i18n="periodicityValue">Lorem ipsum dolor sit amet</span></p>
+                                <p><strong data-i18n="languages">Tillar</strong>: <span data-i18n="languagesValue">Lorem ipsum dolor sit amet</span></p>
+                                <p><strong data-i18n="format">Nashr formati</strong>: <span data-i18n="formatValue">Lorem ipsum dolor sit amet</span></p>
+                            </div>
+
+                            <div class="subsection">
+                                <h3 class="subsection-title" data-i18n="editorialTitle">Redkollegiya tarkibi</h3>
+                                <ul class="editorial-list">
+                                    <li>Lorem ipsum dolor sit amet</li>
+                                    <li>Consectetur adipiscing elit</li>
+                                    <li>Sed do eiusmod tempor</li>
+                                    <li>Incididunt ut labore</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <aside class="journal-archive-preview">
+                            <div class="archive-year-block">
+                                <h4>2026</h4>
+                                <div class="cover-grid">
+                                    <article class="cover-card">
+                                        <div class="cover-thumb cover-a"></div>
+                                        <a href="#arxiv" class="cover-link">1-son</a>
+                                    </article>
+                                    <article class="cover-card">
+                                        <div class="cover-thumb cover-b"></div>
+                                        <a href="#arxiv" class="cover-link">2-son</a>
+                                    </article>
+                                </div>
+                            </div>
+
+                            <div class="archive-year-block">
+                                <h4>2025</h4>
+                                <div class="cover-grid">
+                                    <article class="cover-card">
+                                        <div class="cover-thumb cover-c"></div>
+                                        <a href="#arxiv" class="cover-link">4-son</a>
+                                    </article>
+                                    <article class="cover-card">
+                                        <div class="cover-thumb cover-d"></div>
+                                        <a href="#arxiv" class="cover-link">3-son</a>
+                                    </article>
+                                </div>
+                            </div>
+                        </aside>
                     </div>
-                    <div class="info-item">
-                        <span data-i18n="date">Nashr sanasi</span>
-                        <strong data-i18n="loremShort">Lorem ipsum</strong>
-                    </div>
-                    <div class="info-item">
-                        <span data-i18n="directions">Yo'nalishlar</span>
-                        <strong data-i18n="loremShort">Lorem ipsum</strong>
-                    </div>
-                </div>
+                </section>
 
-                <div class="journal-viewer">
-                    <div class="viewer-head">
-                        <div>
-                            <h3 data-i18n="journal">Jurnal</h3>
+                <section class="tab-panel" id="talablar" data-label-key="navRequirements" data-label="Talablar">
+                    <h3 class="section-title" data-i18n="requirementsTitle">Mualliflar uchun asosiy talablar</h3>
+                    <p class="lead-paragraph" data-i18n="requirementsIntro">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                    <div class="plain-sections">
+                        <section class="plain-box">
+                            <h4 data-i18n="reqOne">1. Matn hajmi</h4>
+                            <p data-i18n="reqOneDesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </section>
+                        <section class="plain-box">
+                            <h4 data-i18n="reqTwo">2. Tuzilishi</h4>
+                            <p data-i18n="reqTwoDesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </section>
+                        <section class="plain-box">
+                            <h4 data-i18n="reqThree">3. Til talabi</h4>
+                            <p data-i18n="reqThreeDesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </section>
+                        <section class="plain-box">
+                            <h4 data-i18n="reqFour">4. Format</h4>
+                            <p data-i18n="reqFourDesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </section>
+                    </div>
+
+                    <ol class="check-list">
+                        <li data-i18n="reqPointOne">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                        <li data-i18n="reqPointTwo">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                        <li data-i18n="reqPointThree">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                        <li data-i18n="reqPointFour">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
+                    </ol>
+                </section>
+
+                <section class="tab-panel" id="arxiv" data-label-key="navArchive" data-label="Arxiv">
+                    <h3 class="section-title" data-i18n="archiveTitle">Jurnal arxivi</h3>
+                    <p class="lead-paragraph" data-i18n="archiveIntro">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                    <div class="archive-listing">
+                        <div class="archive-row">
+                            <div class="archive-meta">
+                                <strong>2026</strong>
+                                <span data-i18n="archiveIssueA">1-son</span>
+                                <p data-i18n="archiveItemA1">Lorem ipsum dolor sit amet</p>
+                                <p data-i18n="archiveItemA2">Lorem ipsum dolor sit amet</p>
+                            </div>
+                            <div class="archive-cover cover-a"></div>
+                        </div>
+                        <div class="archive-row">
+                            <div class="archive-meta">
+                                <strong>2025</strong>
+                                <span data-i18n="archiveIssueB">4-son</span>
+                                <p data-i18n="archiveItemB1">Lorem ipsum dolor sit amet</p>
+                                <p data-i18n="archiveItemB2">Lorem ipsum dolor sit amet</p>
+                            </div>
+                            <div class="archive-cover cover-b"></div>
+                        </div>
+                        <div class="archive-row">
+                            <div class="archive-meta">
+                                <strong>2024</strong>
+                                <span data-i18n="archiveIssueC">3-son</span>
+                                <p data-i18n="archiveItemC1">Lorem ipsum dolor sit amet</p>
+                                <p data-i18n="archiveItemC2">Lorem ipsum dolor sit amet</p>
+                            </div>
+                            <div class="archive-cover cover-c"></div>
                         </div>
                     </div>
 
-                    <div class="viewer-toolbar">
-                        <div class="viewer-toolbar-left">
-                            <div class="viewer-toolbar-group">
+                    <div class="viewer-divider" data-i18n="journal">Jurnal</div>
+
+                    <div class="journal-viewer">
+                        <div class="viewer-head">
+                            <div>
+                                <h3 data-i18n="viewerTitle">So'nggi sonni ko'rish</h3>
+                                <p data-i18n="viewerIntro">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            </div>
+                        </div>
+
+                        <div class="viewer-toolbar">
+                            <div class="viewer-toolbar-left">
+                                <div class="view-mode-switch" aria-label="Ko'rish rejimi">
+                                    <button class="view-mode-button" type="button" data-view-mode="single" aria-pressed="false">
+                                        <span data-i18n="singlePage">1 sahifa</span>
+                                    </button>
+                                    <button class="view-mode-button" type="button" data-view-mode="spread" aria-pressed="true">
+                                        <span data-i18n="twoPages">2 sahifa</span>
+                                    </button>
+                                </div>
+                            </div>
+
+                            <form class="page-jump" id="page-jump-form">
+                                <label class="page-jump-label" for="page-input" data-i18n="page">Sahifa</label>
+                                <input id="page-input" class="page-jump-input" type="number" min="1" step="1" value="1" inputmode="numeric">
+                                <button class="page-jump-button" type="submit" data-i18n="open">Ochish</button>
+                            </form>
+                        </div>
+
+                        <div class="viewer-stage">
+                            <div class="book-shell" id="book-shell">
+                                <div class="book-status" id="journal-status" data-i18n="pdfLoading">PDF yuklanmoqda...</div>
+
+                                <div class="book-spread" id="book-spread">
+                                    <div class="book-gutter"></div>
+
+                                    <div class="book-page left-page" id="left-page">
+                                        <div class="page-number left-number" id="left-page-number"></div>
+                                        <canvas id="left-page-canvas"></canvas>
+                                        <div class="page-empty" id="left-page-empty" data-i18n="emptyPage">Bo'sh sahifa</div>
+                                    </div>
+
+                                    <div class="book-page right-page" id="right-page">
+                                        <div class="page-number right-number" id="right-page-number"></div>
+                                        <canvas id="right-page-canvas"></canvas>
+                                        <div class="page-empty" id="right-page-empty" data-i18n="emptyPage">Bo'sh sahifa</div>
+                                    </div>
+                                </div>
+
+                                <div class="book-nav-corner">
+                                    <button class="viewer-arrow book-corner-arrow" type="button" data-journal-nav="prev" aria-label="Oldingi sahifalar">&#8592;</button>
+                                    <button class="viewer-arrow book-corner-arrow" type="button" data-journal-nav="next" aria-label="Keyingi sahifalar">&#8594;</button>
+                                </div>
+
+                                <div class="fullscreen-reader-bar" aria-label="O'qish sozlamalari">
+                                    <div class="fullscreen-reader-group">
+                                        <button class="reader-icon-button" type="button" data-journal-nav="prev" aria-label="Oldingi sahifalar">
+                                            <svg class="reader-button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M15 18l-6-6 6-6"></path></svg>
+                                        </button>
+                                        <strong class="fullscreen-page-indicator" id="fullscreen-page-counter">0 / 0</strong>
+                                        <button class="reader-icon-button" type="button" data-journal-nav="next" aria-label="Keyingi sahifalar">
+                                            <svg class="reader-button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M9 18l6-6-6-6"></path></svg>
+                                        </button>
+                                    </div>
+
+                                    <label class="fullscreen-page-slider-label" for="fullscreen-page-slider">
+                                        <span data-i18n="page">Sahifa</span>
+                                        <input id="fullscreen-page-slider" class="fullscreen-page-slider" type="range" min="1" max="1" value="1">
+                                    </label>
+
+                                    <div class="fullscreen-reader-group">
+                                        <button class="reader-text-button" type="button" data-reader-tone="soft">
+                                            <svg class="reader-button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v2"></path><path d="M12 19v2"></path><path d="M4.2 4.2l1.4 1.4"></path><path d="M18.4 18.4l1.4 1.4"></path><path d="M3 12h2"></path><path d="M19 12h2"></path><circle cx="12" cy="12" r="4"></circle></svg>
+                                            <span data-i18n="softMode">Yumshoq</span>
+                                        </button>
+                                        <button class="reader-text-button" type="button" data-reader-tone="dark">
+                                            <svg class="reader-button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 14.5A7.5 7.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5z"></path></svg>
+                                            <span data-i18n="darkMode">Tungi</span>
+                                        </button>
+                                        <button class="reader-text-button" type="button" data-view-mode="single">
+                                            <svg class="reader-button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 3h10a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2z"></path></svg>
+                                            <span data-i18n="singlePage">1 sahifa</span>
+                                        </button>
+                                        <button class="reader-text-button" type="button" id="fullscreen-exit">
+                                            <svg class="reader-button-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3v3a2 2 0 0 1-2 2H3"></path><path d="M21 8h-3a2 2 0 0 1-2-2V3"></path><path d="M16 21v-3a2 2 0 0 1 2-2h3"></path><path d="M3 16h3a2 2 0 0 1 2 2v3"></path></svg>
+                                            <span data-i18n="exitFullscreen">Oddiy ekran</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="viewer-footer">
+                            <div class="viewer-counter">
+                                <strong id="journal-page-counter">0 / 0</strong>
+                            </div>
+                            <div class="viewer-footer-actions">
+                                <a class="pdf-link" href="assets/journal/4-son-2025.pdf" target="_blank" rel="noopener noreferrer" data-i18n="openPdf">PDF ochish</a>
                                 <button class="viewer-action" type="button" id="fullscreen-toggle" aria-label="To'liq ekran" data-i18n="fullscreen">
                                     To'liq ekran
                                 </button>
                             </div>
+                        </div>
+                    </div>
+                </section>
 
-                            <div class="view-mode-switch" aria-label="Ko'rish rejimi">
-                                <button class="view-mode-button" type="button" data-view-mode="single" aria-pressed="false">
-                                    <span data-i18n="singlePage">1 sahifa</span>
-                                </button>
-                                <button class="view-mode-button" type="button" data-view-mode="spread" aria-pressed="true">
-                                    <span data-i18n="twoPages">2 sahifa</span>
-                                </button>
+                <section class="tab-panel" id="redkollegiya" data-label-key="navEditorial" data-label="Redkollegiya">
+                    <h3 class="section-title" data-i18n="editorialTitle">Redkollegiya tarkibi</h3>
+                    <p class="lead-paragraph" data-i18n="editorialIntro">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+                    <div class="board-grid">
+                        <article class="board-card">
+                            <div class="board-photo">Foto</div>
+                            <div class="board-content">
+                                <span class="board-role" data-i18n="chiefEditor">Bosh muharrir</span>
+                                <h3>Lorem Ipsum</h3>
+                                <p data-i18n="editorOne">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             </div>
-                        </div>
-
-                        <form class="page-jump" id="page-jump-form">
-                            <label class="page-jump-label" for="page-input" data-i18n="page">Sahifa</label>
-                            <input id="page-input" class="page-jump-input" type="number" min="1" step="1" value="1" inputmode="numeric">
-                            <button class="page-jump-button" type="submit" data-i18n="open">Ochish</button>
-                        </form>
-                    </div>
-
-                    <div class="viewer-stage">
-                        <div class="book-shell" id="book-shell">
-                            <div class="book-status" id="journal-status" data-i18n="pdfLoading">PDF yuklanmoqda...</div>
-
-                            <div class="book-spread" id="book-spread">
-                                <div class="book-gutter"></div>
-
-                                <div class="book-page left-page" id="left-page">
-                                    <div class="page-number left-number" id="left-page-number"></div>
-                                    <canvas id="left-page-canvas"></canvas>
-                                    <div class="page-empty" id="left-page-empty" data-i18n="emptyPage">Bo'sh sahifa</div>
-                                </div>
-
-                                <div class="book-page right-page" id="right-page">
-                                    <div class="page-number right-number" id="right-page-number"></div>
-                                    <canvas id="right-page-canvas"></canvas>
-                                    <div class="page-empty" id="right-page-empty" data-i18n="emptyPage">Bo'sh sahifa</div>
-                                </div>
+                        </article>
+                        <article class="board-card">
+                            <div class="board-photo">Foto</div>
+                            <div class="board-content">
+                                <span class="board-role" data-i18n="deputyEditor">Muharrir o'rinbosari</span>
+                                <h3>Dolor Sit</h3>
+                                <p data-i18n="editorTwo">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             </div>
-
-                            <div class="book-nav-corner">
-                                <button class="viewer-arrow book-corner-arrow" type="button" data-journal-nav="prev" aria-label="Oldingi sahifalar">&#8592;</button>
-                                <button class="viewer-arrow book-corner-arrow" type="button" data-journal-nav="next" aria-label="Keyingi sahifalar">&#8594;</button>
+                        </article>
+                        <article class="board-card">
+                            <div class="board-photo">Foto</div>
+                            <div class="board-content">
+                                <span class="board-role" data-i18n="secretary">Mas'ul kotib</span>
+                                <h3>Amet Elit</h3>
+                                <p data-i18n="editorThree">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
                             </div>
-                        </div>
+                        </article>
+                        <article class="board-card">
+                            <div class="board-photo">Foto</div>
+                            <div class="board-content">
+                                <span class="board-role" data-i18n="technicalEditor">Texnik muharrir</span>
+                                <h3>Tempor Labore</h3>
+                                <p data-i18n="editorFour">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </article>
                     </div>
+                </section>
+            </main>
 
-                    <div class="viewer-footer">
-                        <div class="viewer-counter">
-                            <strong id="journal-page-counter">0 / 0</strong>
-                        </div>
-                        <a class="pdf-link" href="assets/journal/4-son-2025.pdf" target="_blank" rel="noopener noreferrer" data-i18n="openPdf">PDF ochish</a>
+            <aside class="sidebar-column">
+                <section class="side-block side-cta">
+                    <h3 data-i18n="sideSubmission">Maqola yuborish</h3>
+                </section>
+
+                <section class="side-block">
+                    <div class="side-head" data-i18n="sideCurrentIssue">Joriy son</div>
+                    <div class="side-body">
+                        <p data-i18n="sideIssueText">Lorem ipsum dolor sit amet</p>
+                        <p data-i18n="sideIssueDate">Lorem ipsum dolor sit amet</p>
+                        <p data-i18n="sideIssueArticles">Lorem ipsum dolor sit amet</p>
+                        <p data-i18n="sideIssueTheme">Lorem ipsum dolor sit amet</p>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <section class="tab-panel" id="talablar" data-label-key="navRequirements" data-label="Talablar">
-                <div class="panel-intro">
-                    <div>
-                        <h2 data-i18n="requirementsTitle">Mualliflar uchun asosiy talablar</h2>
+                <section class="side-block">
+                    <div class="side-head">Til</div>
+                    <div class="side-body side-links">
+                        <a href="#" data-lang-short="ru">Русский</a>
+                        <a href="#" data-lang-short="en">English</a>
+                        <a href="#" data-lang-short="uz">O'zbek</a>
                     </div>
-                    <p data-i18n="requirementsIntro">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vitae nibh id mi
-                        tincidunt posuere.
-                    </p>
-                </div>
+                </section>
 
-                <div class="requirement-grid">
-                    <article class="requirement-card">
-                        <strong data-i18n="reqOne">1. Matn hajmi</strong>
-                        <p data-i18n="loremSentence">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </article>
-                    <article class="requirement-card">
-                        <strong data-i18n="reqTwo">2. Tuzilishi</strong>
-                        <p data-i18n="loremSentence">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </article>
-                    <article class="requirement-card">
-                        <strong data-i18n="reqThree">3. Til talabi</strong>
-                        <p data-i18n="loremSentence">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </article>
-                    <article class="requirement-card">
-                        <strong data-i18n="reqFour">4. Format</strong>
-                        <p data-i18n="loremSentence">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </article>
-                </div>
-
-                <ol class="check-list">
-                    <li data-i18n="loremSentence">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                    <li data-i18n="loremSentence">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                    <li data-i18n="loremSentence">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                    <li data-i18n="loremSentence">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</li>
-                </ol>
-            </section>
-
-            <section class="tab-panel" id="arxiv" data-label-key="navArchive" data-label="Arxiv">
-                <div class="panel-intro">
-                    <div>
-                        <h2 data-i18n="archiveTitle">Jurnal arxivi</h2>
+                <section class="side-block">
+                    <div class="side-head" data-i18n="sideLinks">Tezkor havolalar</div>
+                    <div class="side-body side-links">
+                        <a href="#talablar" data-i18n="navRequirements">Talablar</a>
+                        <a href="#arxiv" data-i18n="navArchive">Arxiv</a>
+                        <a href="assets/journal/4-son-2025.pdf" target="_blank" rel="noopener noreferrer" data-i18n="openPdf">PDF ochish</a>
+                        <a href="#redkollegiya" data-i18n="navEditorial">Redkollegiya</a>
                     </div>
-                    <p data-i18n="loremSentence">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                </div>
+                </section>
 
-                <div class="archive-grid">
-                    <article class="archive-card">
-                        <div class="archive-year">
-                            <span>2026</span>
-                            <strong data-i18n="loremShort">Lorem ipsum</strong>
-                        </div>
-                        <ul>
-                            <li data-i18n="loremTiny">Lorem ipsum dolor</li>
-                            <li data-i18n="loremTiny">Lorem ipsum dolor</li>
-                            <li data-i18n="loremTiny">Lorem ipsum dolor</li>
-                        </ul>
-                    </article>
-                    <article class="archive-card">
-                        <div class="archive-year">
-                            <span>2025</span>
-                            <strong data-i18n="loremShort">Lorem ipsum</strong>
-                        </div>
-                        <ul>
-                            <li data-i18n="loremTiny">Lorem ipsum dolor</li>
-                            <li data-i18n="loremTiny">Lorem ipsum dolor</li>
-                            <li data-i18n="loremTiny">Lorem ipsum dolor</li>
-                            <li data-i18n="loremTiny">Lorem ipsum dolor</li>
-                        </ul>
-                    </article>
-                    <article class="archive-card">
-                        <div class="archive-year">
-                            <span>2024</span>
-                            <strong data-i18n="loremShort">Lorem ipsum</strong>
-                        </div>
-                        <ul>
-                            <li data-i18n="loremTiny">Lorem ipsum dolor</li>
-                            <li data-i18n="loremTiny">Lorem ipsum dolor</li>
-                            <li data-i18n="loremTiny">Lorem ipsum dolor</li>
-                        </ul>
-                    </article>
-                </div>
-            </section>
-
-            <section class="tab-panel" id="redkollegiya" data-label-key="navEditorial" data-label="Redkollegiya">
-                <div class="panel-intro">
-                    <div>
-                        <h2 data-i18n="editorialTitle">Redkollegiya tarkibi</h2>
+                <section class="side-block">
+                    <div class="side-head" data-i18n="sideContacts">Aloqa</div>
+                    <div class="side-body">
+                        <p>Lorem ipsum dolor sit amet</p>
+                        <p>Lorem ipsum dolor sit amet</p>
+                        <p data-i18n="sideAddress">Lorem ipsum dolor sit amet</p>
                     </div>
-                    <p data-i18n="loremSentence">
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                </div>
-
-                <div class="board-grid">
-                    <article class="board-card">
-                        <span class="board-role" data-i18n="chiefEditor">Bosh muharrir</span>
-                        <h3>Prof. M. Karimov</h3>
-                        <p data-i18n="loremSentence">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </article>
-                    <article class="board-card">
-                        <span class="board-role" data-i18n="deputyEditor">Muharrir o'rinbosari</span>
-                        <h3>Dots. S. Raximova</h3>
-                        <p data-i18n="loremSentence">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </article>
-                    <article class="board-card">
-                        <span class="board-role" data-i18n="secretary">Mas'ul kotib</span>
-                        <h3>O. Tursunov</h3>
-                        <p data-i18n="loremSentence">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </article>
-                    <article class="board-card">
-                        <span class="board-role" data-i18n="technicalEditor">Texnik muharrir</span>
-                        <h3>N. Usmonova</h3>
-                        <p data-i18n="loremSentence">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-                    </article>
-                </div>
-            </section>
-        </main>
+                </section>
+            </aside>
+        </div>
     </div>
 
     <script src="assets/vendor/pdf.min.js"></script>
-    <script src="app.js?v=6"></script>
+    <script type="module" src="/src/scripts/app.js"></script>
 </body>
 </html>
