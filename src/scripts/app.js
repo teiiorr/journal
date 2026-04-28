@@ -26,7 +26,7 @@ const readerToneButtons = document.querySelectorAll("[data-reader-tone]");
 const languageButtons = document.querySelectorAll("[data-lang]");
 const languageShortLinks = document.querySelectorAll("[data-lang-short]");
 
-const PDF_URL = "assets/journal/4-son-2025.pdf";
+const PDF_URL = "/assets/journal/4-son-2025.pdf";
 const PDF_PAGE_WIDTH = 595.276;
 const PDF_PAGE_HEIGHT = 841.89;
 
@@ -832,7 +832,7 @@ async function loadPdf() {
         return;
     }
 
-    pdfjsLib.GlobalWorkerOptions.workerSrc = "assets/vendor/pdf.worker.min.js";
+    pdfjsLib.GlobalWorkerOptions.workerSrc = "/assets/vendor/pdf.worker.min.js";
 
     try {
         const loadingTask = pdfjsLib.getDocument(PDF_URL);
