@@ -27,9 +27,15 @@ body {
     min-height: 100vh;
     background: var(--page-bg);
     color: var(--text);
-    font-family: "Manrope", sans-serif;
+    font-family: "Onest", system-ui, sans-serif;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+}
+
+:lang(ru),
+:lang(ru) button,
+:lang(ru) input {
+    font-family: "Inter", system-ui, sans-serif;
 }
 
 body.nav-open {

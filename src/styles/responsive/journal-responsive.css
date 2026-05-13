@@ -220,8 +220,7 @@
         width: 100%;
     }
 
-    .identity-meta,
-    .identity-subtitle {
+    .identity-meta {
         font-size: 13px;
     }
 

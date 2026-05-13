@@ -33,21 +33,15 @@ const PDF_PAGE_HEIGHT = 841.89;
 const translations = {
     uz: {
         htmlLang: "uz",
-        pageTitle: "O'zDSMI",
-        heroSubtitle: "",
+        pageTitle: "OʻzDSMI",
         heroTitle: "Tadqiqotlar, maqolalar va ilmiy muloqot uchun zamonaviy jurnal makoni",
-        heroDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         noticeText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        statFrequency: "son / yil",
-        statArticles: "maqola / son",
-        statReviewers: "ekspert",
         navAbout: "Jurnal haqida",
         navRequirements: "Talablar",
         navArchive: "Arxiv",
         navEditorial: "Redkollegiya",
         breadcrumbHome: "Asosiy sahifa",
         breadcrumbJournal: "Jurnal",
-        contentCaption: "Jurnal sahifasi",
         aboutTitle: "Jurnal faoliyati va maqsadi",
         aboutIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         aboutCopyOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -58,16 +52,9 @@ const translations = {
         languagesValue: "Lorem ipsum dolor sit amet",
         format: "Nashr formati",
         formatValue: "Lorem ipsum dolor sit amet",
-        founder: "Muassis",
-        founderValue: "Akademik nashrlar markazi",
-        date: "Nashr sanasi",
-        dateValue: "1998-yildan beri",
-        directions: "Yo'nalishlar",
-        directionsValue: "Ijtimoiy, tabiiy va amaliy fanlar",
         journal: "Jurnal",
-        viewerTitle: "So'nggi sonni ko'rish",
-        viewerIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        fullscreen: "To'liq ekran",
+        viewerTitle: "Soʻnggi sonni koʻrish",
+        fullscreen: "Toʻliq ekran",
         exitFullscreen: "Oddiy ekran",
         singlePage: "1 sahifa",
         twoPages: "2 sahifa",
@@ -75,9 +62,9 @@ const translations = {
         open: "Ochish",
         pdfLoading: "PDF yuklanmoqda...",
         pdfLibraryError: "PDF kutubxonasi yuklanmadi",
-        pdfOpenError: "PDF faylni ochib bo'lmadi",
+        pdfOpenError: "PDF faylni ochib boʻlmadi",
         pdfRenderError: "PDF ochilmadi",
-        emptyPage: "Bo'sh sahifa",
+        emptyPage: "Boʻsh sahifa",
         openPdf: "PDF ochish",
         softMode: "Yumshoq",
         darkMode: "Tungi",
@@ -109,8 +96,8 @@ const translations = {
         editorialTitle: "Redkollegiya tarkibi",
         editorialIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         chiefEditor: "Bosh muharrir",
-        deputyEditor: "Muharrir o'rinbosari",
-        secretary: "Mas'ul kotib",
+        deputyEditor: "Muharrir oʻrinbosari",
+        secretary: "Masʼul kotib",
         technicalEditor: "Texnik muharrir",
         editorOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         editorTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
@@ -122,7 +109,6 @@ const translations = {
         sideIssueArticles: "Lorem ipsum dolor sit amet",
         sideIssueTheme: "Lorem ipsum dolor sit amet",
         sideSubmission: "Maqola yuborish",
-        sideSubmissionText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         sideLinks: "Tezkor havolalar",
         sideContacts: "Aloqa",
         sideAddress: "Lorem ipsum dolor sit amet"
@@ -130,20 +116,14 @@ const translations = {
     ru: {
         htmlLang: "ru",
         pageTitle: "O'zDSMI",
-        heroSubtitle: "",
         heroTitle: "Современное журнальное пространство для исследований, статей и научного диалога",
-        heroDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         noticeText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        statFrequency: "выпуска / год",
-        statArticles: "статей / выпуск",
-        statReviewers: "экспертов",
         navAbout: "О журнале",
         navRequirements: "Требования",
         navArchive: "Архив",
         navEditorial: "Редколлегия",
         breadcrumbHome: "Главная",
         breadcrumbJournal: "Журнал",
-        contentCaption: "Страница журнала",
         aboutTitle: "Деятельность и цель журнала",
         aboutIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         aboutCopyOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -154,15 +134,8 @@ const translations = {
         languagesValue: "Узбекский, русский, английский",
         format: "Формат издания",
         formatValue: "Электронный PDF и веб-архив",
-        founder: "Учредитель",
-        founderValue: "Центр академических изданий",
-        date: "Дата издания",
-        dateValue: "С 1998 года",
-        directions: "Направления",
-        directionsValue: "Социальные, естественные и прикладные науки",
         journal: "Журнал",
         viewerTitle: "Просмотр последнего выпуска",
-        viewerIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         fullscreen: "Полный экран",
         exitFullscreen: "Обычный экран",
         singlePage: "1 страница",
@@ -218,7 +191,6 @@ const translations = {
         sideIssueArticles: "Lorem ipsum dolor sit amet",
         sideIssueTheme: "Lorem ipsum dolor sit amet",
         sideSubmission: "Отправить статью",
-        sideSubmissionText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         sideLinks: "Быстрые ссылки",
         sideContacts: "Контакты",
         sideAddress: "Lorem ipsum dolor sit amet"
@@ -226,20 +198,14 @@ const translations = {
     en: {
         htmlLang: "en",
         pageTitle: "O'zDSMI",
-        heroSubtitle: "",
         heroTitle: "A modern journal space for research, articles and scientific dialogue",
-        heroDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         noticeText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        statFrequency: "issues / year",
-        statArticles: "articles / issue",
-        statReviewers: "reviewers",
         navAbout: "About Journal",
         navRequirements: "Requirements",
         navArchive: "Archive",
         navEditorial: "Editorial Board",
         breadcrumbHome: "Home",
         breadcrumbJournal: "Journal",
-        contentCaption: "Journal page",
         aboutTitle: "Journal activity and purpose",
         aboutIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         aboutCopyOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
@@ -250,15 +216,8 @@ const translations = {
         languagesValue: "Uzbek, Russian, English",
         format: "Publication format",
         formatValue: "Electronic PDF and web archive",
-        founder: "Founder",
-        founderValue: "Academic Publications Center",
-        date: "Publication date",
-        dateValue: "Since 1998",
-        directions: "Scope",
-        directionsValue: "Social, natural and applied sciences",
         journal: "Journal",
         viewerTitle: "View the latest issue",
-        viewerIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
         fullscreen: "Fullscreen",
         exitFullscreen: "Exit fullscreen",
         singlePage: "1 page",
@@ -314,7 +273,6 @@ const translations = {
         sideIssueArticles: "Lorem ipsum dolor sit amet",
         sideIssueTheme: "Lorem ipsum dolor sit amet",
         sideSubmission: "Submit article",
-        sideSubmissionText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
         sideLinks: "Quick links",
         sideContacts: "Contact",
         sideAddress: "Lorem ipsum dolor sit amet"
@@ -484,14 +442,14 @@ function getScaleForPage(page, canvas, singlePageMode) {
     let containerHeight = parentHeight || Math.round(containerWidth * (PDF_PAGE_HEIGHT / PDF_PAGE_WIDTH));
 
     if (isFullscreen) {
-        const maxSpreadWidth = singlePageMode ? 800 : 1320;
+        const maxSpreadWidth = singlePageMode ? 900 : 1480;
         const maxPageWidth = singlePageMode ? maxSpreadWidth : Math.floor(maxSpreadWidth / 2);
         containerWidth = Math.min(containerWidth, maxPageWidth);
     }
 
     const baseViewport = page.getViewport({ scale: 1 });
     const horizontalPadding = isFullscreen ? (singlePageMode ? 24 : 16) : (singlePageMode ? 28 : 18);
-    const verticalPadding = isFullscreen ? 44 : 8;
+    const verticalPadding = isFullscreen ? 36 : 8;
     const availableWidth = Math.max(120, containerWidth - horizontalPadding);
     const availableHeight = Math.max(160, containerHeight - verticalPadding);
     const widthScale = availableWidth / baseViewport.width;
@@ -740,21 +698,16 @@ pageJumpForm.addEventListener("submit", (event) => {
     renderSpread(targetPage);
 });
 
-fullscreenToggle.addEventListener("click", async () => {
+async function handleFullscreenToggleClick() {
     try {
         await toggleFullscreen();
     } catch (error) {
         console.error(error);
     }
-});
+}
 
-fullscreenExit.addEventListener("click", async () => {
-    try {
-        await toggleFullscreen();
-    } catch (error) {
-        console.error(error);
-    }
-});
+fullscreenToggle.addEventListener("click", handleFullscreenToggleClick);
+fullscreenExit.addEventListener("click", handleFullscreenToggleClick);
 
 readerToneButtons.forEach((button) => {
     button.addEventListener("click", () => {
@@ -781,7 +734,7 @@ window.addEventListener("resize", () => {
     }
 });
 
-document.addEventListener("fullscreenchange", () => {
+function handleFullscreenChange() {
     const wasFullscreen = bookShell.classList.contains("is-fullscreen-active");
     syncFullscreenButton();
     const isFullscreen = bookShell.classList.contains("is-fullscreen-active");
@@ -793,21 +746,10 @@ document.addEventListener("fullscreenchange", () => {
     if (pdfDoc) {
         renderSpread(spreadStart);
     }
-});
+}
 
-document.addEventListener("webkitfullscreenchange", () => {
-    const wasFullscreen = bookShell.classList.contains("is-fullscreen-active");
-    syncFullscreenButton();
-    const isFullscreen = bookShell.classList.contains("is-fullscreen-active");
-
-    if (wasFullscreen && !isFullscreen) {
-        restoreJournalScrollAfterFullscreen();
-    }
-
-    if (pdfDoc) {
-        renderSpread(spreadStart);
-    }
-});
+document.addEventListener("fullscreenchange", handleFullscreenChange);
+document.addEventListener("webkitfullscreenchange", handleFullscreenChange);
 
 document.addEventListener("keydown", (event) => {
     const isTyping = ["INPUT", "TEXTAREA", "SELECT"].includes(document.activeElement?.tagName);
@@ -823,7 +765,6 @@ document.addEventListener("keydown", (event) => {
     if (event.key === "ArrowRight") {
         moveJournal(1);
     }
-
 });
 
 async function loadPdf() {
