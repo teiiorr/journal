@@ -144,9 +144,9 @@
 .book-shell:-webkit-full-screen .book-spread {
     flex: 1;
     min-height: 0;
-    width: min(100%, 1320px);
+    width: min(100%, 1480px);
     height: auto;
-    max-height: calc(100dvh - 64px);
+    max-height: calc(100dvh - 56px);
     margin: auto;
     aspect-ratio: 1190.552 / 841.89;
     background: #fff !important;
@@ -156,6 +156,7 @@
     column-gap: 0;
     overflow: hidden;
 }
+
 
 .book-shell.is-fullscreen-active.reader-tone-soft,
 .book-shell.is-fullscreen-active.reader-tone-soft .book-spread,

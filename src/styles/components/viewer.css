@@ -8,7 +8,7 @@
 
 .viewer-head h3 {
     margin-bottom: 8px;
-    font-family: "Manrope", sans-serif;
+    font-family: "Onest", system-ui, sans-serif;
     font-size: 26px;
 }
 
@@ -48,16 +48,41 @@
 }
 
 .view-mode-button {
-    min-width: 96px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 110px;
     height: 42px;
+    padding: 0 14px;
     background: transparent;
     color: #586c7b;
+    border-radius: 6px;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+
+.view-mode-button:hover:not(.active) {
+    background: rgba(63, 120, 169, 0.08);
+    color: #1e2a33;
 }
 
 .view-mode-button.active {
     background: var(--blue);
     color: #fff;
 }
+
+.btn-icon {
+    width: 16px;
+    height: 16px;
+    flex: 0 0 auto;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    pointer-events: none;
+}
+
 
 .viewer-action {
     height: 42px;
@@ -126,13 +151,7 @@
 }
 
 .book-gutter {
-    position: absolute;
-    left: 50%;
-    top: 10px;
-    bottom: 10px;
-    width: 24px;
-    transform: translateX(-50%);
-    background: linear-gradient(90deg, rgba(37, 68, 99, 0.14), rgba(255, 255, 255, 0.5), rgba(37, 68, 99, 0.14));
+    display: none;
 }
 
 .book-page {
@@ -143,12 +162,12 @@
     justify-content: center;
 }
 
-.left-page {
-    box-shadow: inset -8px 0 16px rgba(20, 43, 66, 0.05);
+.book-shell.is-spread-view .left-page {
+    justify-content: flex-end;
 }
 
-.right-page {
-    box-shadow: inset 8px 0 16px rgba(20, 43, 66, 0.05);
+.book-shell.is-spread-view .right-page {
+    justify-content: flex-start;
 }
 
 .book-shell.is-single-view .book-spread {

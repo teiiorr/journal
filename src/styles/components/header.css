@@ -31,7 +31,7 @@
 }
 
 .identity-copy h1 {
-    font-family: "Manrope", sans-serif;
+    font-family: "Onest", system-ui, sans-serif;
     font-size: clamp(30px, 3vw, 42px);
     line-height: 1.02;
     color: #4c85b6;
@@ -104,7 +104,7 @@
 .banner-copy h2 {
     margin-top: 10px;
     max-width: 22ch;
-    font-family: "Manrope", sans-serif;
+    font-family: "Onest", system-ui, sans-serif;
     font-size: clamp(28px, 2.6vw, 38px);
     line-height: 1.08;
 }
