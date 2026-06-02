@@ -1,15 +1,18 @@
 .journal-viewer {
     position: relative;
-    margin-top: 18px;
-    padding: 22px;
+    margin-top: 20px;
+    padding: 26px;
     background: #f7f9fb;
     border: 1px solid #d7e0e6;
+    border-radius: var(--radius);
 }
 
 .viewer-head h3 {
     margin-bottom: 8px;
-    font-family: "Manrope", sans-serif;
-    font-size: 26px;
+    font-family: var(--font-display);
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--ink);
 }
 
 .viewer-toolbar {
@@ -42,9 +45,20 @@
     border: 0;
     background: var(--blue);
     color: #fff;
+    font-family: var(--font-sans);
     font-size: 14px;
     font-weight: 700;
+    letter-spacing: 0.02em;
     cursor: pointer;
+    transition: background 0.25s var(--ease), transform 0.2s var(--ease), box-shadow 0.25s var(--ease);
+}
+
+.viewer-action:hover,
+.page-jump-button:hover,
+.pdf-link:hover {
+    background: #345f86;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(63, 120, 169, 0.32);
 }
 
 .view-mode-button {
@@ -52,6 +66,10 @@
     height: 42px;
     background: transparent;
     color: #586c7b;
+}
+
+.view-mode-button:hover {
+    color: var(--blue);
 }
 
 .view-mode-button.active {
@@ -210,10 +228,18 @@
     width: 44px;
     height: 44px;
     border: 1px solid #cbd7e0;
+    border-radius: var(--radius);
     background: #fff;
     color: #3b4f60;
     font-size: 18px;
     cursor: pointer;
+    transition: background 0.25s var(--ease), color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+
+.viewer-arrow:hover {
+    background: var(--blue);
+    border-color: var(--blue);
+    color: #fff;
 }
 
 .viewer-footer {

@@ -33,11 +33,11 @@ const PDF_PAGE_HEIGHT = 841.89;
 const translations = {
     uz: {
         htmlLang: "uz",
-        pageTitle: "O'zDSMI",
+        pageTitle: "O'zDSMI xabarlari",
         heroSubtitle: "",
-        heroTitle: "Tadqiqotlar, maqolalar va ilmiy muloqot uchun zamonaviy jurnal makoni",
-        heroDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        noticeText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        heroTitle: "«O'zbekiston davlat san'at va madaniyat instituti xabarlari» — ilmiy-nazariy, amaliy-uslubiy va ma'naviy-ma'rifiy jurnal",
+        heroDescription: "Jurnal madaniyat va san'at sohalaridagi ilmiy-tadqiqot yutuqlarini targ'ib etish, yangi ilmiy-nazariy va kontseptual qarashlarni bayon etish hamda soha mutaxassislari muloqotini tashkil etishga xizmat qiladi.",
+        noticeText: "Jurnal O'zbekiston Respublikasi OAK Rayosatining 2017-yil 29-noyabrdagi 245/6-sonli qarori bilan tavsiya etilgan ilmiy nashrlar ro'yxatiga kiritilgan. ISSN 2181-8932.",
         statFrequency: "son / yil",
         statArticles: "maqola / son",
         statReviewers: "ekspert",
@@ -49,24 +49,28 @@ const translations = {
         breadcrumbJournal: "Jurnal",
         contentCaption: "Jurnal sahifasi",
         aboutTitle: "Jurnal faoliyati va maqsadi",
-        aboutIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        aboutCopyOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        aboutCopyTwo: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        periodicity: "Davriyligi",
-        periodicityValue: "Lorem ipsum dolor sit amet",
+        aboutIntro: "«O'zbekiston davlat san'at va madaniyat instituti xabarlari» — O'zbekiston Respublikasi OAK ro'yxatiga kiritilgan ilmiy-nazariy, amaliy-uslubiy, ma'naviy-ma'rifiy jurnal (ISSN 2181-8932). Nashr mamlakatda madaniyat va san'at sohalarida olib borilayotgan ilmiy-tadqiqot yutuqlarini targ'ib etishga xizmat qiladi.",
+        aboutCopyOne: "Jurnalda teatr va kino, musiqa san'ati, san'at tarixi, falsafa va nomoddiy madaniy meros, pedagogika hamda psixologiya yo'nalishlariga oid, aniq o'rganilgan va ishonchli manbalarga asoslangan ilmiy maqolalar chop etiladi.",
+        aboutCopyTwo: "Jurnalning asosiy maqsadi — ilm-fanni qo'llab-quvvatlash siyosatini targ'ib qilish, oliy ta'lim va ilmiy-tadqiqot muassasalari natijalarini nashr etish, yosh tadqiqotchilarni ilmiy faoliyatga jalb etish va yuksak ma'naviyatni shakllantirishdan iborat.",
+        founder: "Ta'sischi",
+        founderValue: "O'zbekiston davlat san'at va madaniyat instituti",
         languages: "Tillar",
-        languagesValue: "Lorem ipsum dolor sit amet",
-        format: "Nashr formati",
-        formatValue: "Lorem ipsum dolor sit amet",
-        founder: "Muassis",
-        founderValue: "Akademik nashrlar markazi",
-        date: "Nashr sanasi",
-        dateValue: "1998-yildan beri",
+        languagesValue: "O'zbek, qoraqalpoq, rus, ingliz",
+        format: "Nashr shakli",
+        formatValue: "An'anaviy (bosma)",
         directions: "Yo'nalishlar",
-        directionsValue: "Ijtimoiy, tabiiy va amaliy fanlar",
+        directionsValue: "San'atshunoslik, filologiya, tarix, falsafa, pedagogika, psixologiya, sotsiologiya, siyosatshunoslik",
+        periodicity: "Davriyligi",
+        periodicityValue: "",
+        date: "Nashr sanasi",
+        dateValue: "",
+        aboutLeadOne: "Bosh muharrir — Nodirbek Sayfullayev",
+        aboutLeadTwo: "Bosh muharrir o'rinbosari — Baxtiyor Yakubov",
+        aboutLeadThree: "Mas'ul kotib — Lazizaxon Axmataliyeva",
+        aboutLeadFour: "Sahifalovchi dizayner — Abdug'ani Mamasodiqov",
         journal: "Jurnal",
         viewerTitle: "So'nggi sonni ko'rish",
-        viewerIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        viewerIntro: "Jurnalning so'nggi soni (2025-yil, 4-son) bilan to'g'ridan-to'g'ri shu sahifada tanishing. Sahifalarni varaqlash yoki to'liq ekran rejimidan foydalanishingiz mumkin.",
         fullscreen: "To'liq ekran",
         exitFullscreen: "Oddiy ekran",
         singlePage: "1 sahifa",
@@ -82,58 +86,59 @@ const translations = {
         softMode: "Yumshoq",
         darkMode: "Tungi",
         requirementsTitle: "Mualliflar uchun asosiy talablar",
-        requirementsIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        requirementsIntro: "Jurnalga taqdim etiladigan ilmiy maqolalarga qo'yiladigan talablar jahon andozalari hamda O'zbekistondagi doktorlik (PhD va DSc) tadqiqotlari tizimi andozalaridan kelib chiqadi. Maqola mavzusi jurnal ruknlariga mos kelishi shart.",
         reqOne: "1. Matn hajmi",
-        reqOneDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        reqOneDesc: "Maqolaning maksimal hajmi — 8 bet. Foydalanilgan adabiyotlar soni kamida 5–10 ta manbadan iborat bo'lishi lozim.",
         reqTwo: "2. Tuzilishi",
-        reqTwoDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        reqTwoDesc: "Muallif ma'lumoti, mavzu (Title), annotatsiya (Abstract), kalit so'zlar, kirish, asosiy qism, xulosa va foydalanilgan adabiyotlar.",
         reqThree: "3. Til talabi",
-        reqThreeDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        reqThreeDesc: "Maqolalar o'zbek, qoraqalpoq, rus yoki ingliz tillarida qabul qilinadi. O'zbek tilidagi o', g', q, h harflari matnda to'liq yozilishi shart.",
         reqFour: "4. Format",
-        reqFourDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        reqPointOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        reqPointTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        reqPointThree: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        reqPointFour: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        reqFourDesc: "«Times New Roman», 14 shrift, 1.5 interval. Sahifa chetlari: chap 3 sm, yuqori va quyi 2 sm, o'ng 1.5 sm; abzas 1.25 sm.",
+        reqPointOne: "Barcha maqolalar «Antiplagiat» tizimida tekshiriladi.",
+        reqPointTwo: "Annotatsiya 6 qatordan oshmasligi, kalit so'zlar 8–10 tadan iborat bo'lishi lozim.",
+        reqPointThree: "Ekspert xulosasiga ko'ra talabga javob bermaydigan maqolalar qabul qilinmaydi; tahririyat texnik tahrir huquqiga ega.",
+        reqPointFour: "Tahrir va nashrga tayyorlash narxi — 400 ming so'm.",
         archiveTitle: "Jurnal arxivi",
-        archiveIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        archiveIntro: "Jurnalning chop etilgan sonlari arxivi. Har bir sonni ro'yxatdan tanlab, PDF shaklida o'qishingiz mumkin.",
         archiveIssueA: "1-son",
-        archiveItemA1: "Lorem ipsum dolor sit amet",
-        archiveItemA2: "Lorem ipsum dolor sit amet",
+        archiveItemA1: "Ilmiy maqolalar to'plami",
+        archiveItemA2: "PDF formatda",
         archiveIssueB: "4-son",
-        archiveItemB1: "Lorem ipsum dolor sit amet",
-        archiveItemB2: "Lorem ipsum dolor sit amet",
+        archiveItemB1: "So'nggi chop etilgan son",
+        archiveItemB2: "To'liq matn PDF'da mavjud",
         archiveIssueC: "3-son",
-        archiveItemC1: "Lorem ipsum dolor sit amet",
-        archiveItemC2: "Lorem ipsum dolor sit amet",
+        archiveItemC1: "Ilmiy maqolalar to'plami",
+        archiveItemC2: "PDF formatda",
         editorialTitle: "Redkollegiya tarkibi",
-        editorialIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        editorialIntro: "Jurnalning tahrir hay'ati va jamoatchilik kengashi tarkibi. Quyida jurnal rahbariyati hamda tahrir hay'ati a'zolari keltirilgan.",
+        boardMembersTitle: "Tahrir hay'ati a'zolari",
         chiefEditor: "Bosh muharrir",
-        deputyEditor: "Muharrir o'rinbosari",
+        deputyEditor: "Bosh muharrir o'rinbosari",
         secretary: "Mas'ul kotib",
-        technicalEditor: "Texnik muharrir",
-        editorOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        editorTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        editorThree: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        editorFour: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        technicalEditor: "Sahifalovchi dizayner",
+        editorOne: "O'zbekiston davlat san'at va madaniyat instituti rektori",
+        editorTwo: "Ilmiy ishlar va innovatsiyalar bo'yicha prorektor",
+        editorThree: "Jurnalning mas'ul kotibi",
+        editorFour: "Jurnal sahifalovchi dizayneri",
         sideCurrentIssue: "Joriy son",
-        sideIssueText: "Lorem ipsum dolor sit amet",
-        sideIssueDate: "Lorem ipsum dolor sit amet",
-        sideIssueArticles: "Lorem ipsum dolor sit amet",
-        sideIssueTheme: "Lorem ipsum dolor sit amet",
+        sideIssueText: "4-son",
+        sideIssueDate: "2025-yil",
+        sideIssueArticles: "To'liq matn PDF formatda",
+        sideIssueTheme: "San'at, madaniyat va pedagogika",
         sideSubmission: "Maqola yuborish",
-        sideSubmissionText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        sideSubmissionText: "Maqolalar tahririyat talablariga muvofiq tayyorlanadi. Tahrir va nashrga tayyorlash narxi — 400 ming so'm.",
         sideLinks: "Tezkor havolalar",
         sideContacts: "Aloqa",
-        sideAddress: "Lorem ipsum dolor sit amet"
+        sideAddress: "Toshkent sh., Yalang'och dahasi, Zafar Diyor ko'chasi, 127-A"
     },
     ru: {
         htmlLang: "ru",
-        pageTitle: "O'zDSMI",
+        pageTitle: "O'zDSMI xabarlari",
         heroSubtitle: "",
-        heroTitle: "Современное журнальное пространство для исследований, статей и научного диалога",
-        heroDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        noticeText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        heroTitle: "«Вестник Государственного института искусств и культуры Узбекистана» — научно-теоретический, практико-методический и духовно-просветительский журнал",
+        heroDescription: "Журнал служит популяризации научно-исследовательских достижений в сфере культуры и искусства, изложению новых научно-теоретических и концептуальных взглядов и организации диалога специалистов отрасли.",
+        noticeText: "Журнал включён в перечень научных изданий, рекомендованных решением Президиума ВАК Республики Узбекистан № 245/6 от 29 ноября 2017 года. ISSN 2181-8932.",
         statFrequency: "выпуска / год",
         statArticles: "статей / выпуск",
         statReviewers: "экспертов",
@@ -145,24 +150,28 @@ const translations = {
         breadcrumbJournal: "Журнал",
         contentCaption: "Страница журнала",
         aboutTitle: "Деятельность и цель журнала",
-        aboutIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        aboutCopyOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        aboutCopyTwo: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        periodicity: "Периодичность",
-        periodicityValue: "Ежеквартально",
-        languages: "Языки",
-        languagesValue: "Узбекский, русский, английский",
-        format: "Формат издания",
-        formatValue: "Электронный PDF и веб-архив",
+        aboutIntro: "«Вестник Государственного института искусств и культуры Узбекистана» — научно-теоретический, практико-методический и духовно-просветительский журнал, включённый в перечень ВАК Республики Узбекистан (ISSN 2181-8932). Издание служит популяризации научно-исследовательских достижений в сфере культуры и искусства страны.",
+        aboutCopyOne: "В журнале публикуются основанные на достоверных источниках научные статьи по театру и кино, музыкальному искусству, истории искусств, философии и нематериальному культурному наследию, педагогике и психологии.",
+        aboutCopyTwo: "Основная цель журнала — пропаганда политики поддержки науки, публикация результатов высших учебных и научно-исследовательских учреждений, привлечение молодых исследователей к научной деятельности и формирование высокой духовности.",
         founder: "Учредитель",
-        founderValue: "Центр академических изданий",
-        date: "Дата издания",
-        dateValue: "С 1998 года",
+        founderValue: "Государственный институт искусств и культуры Узбекистана",
+        languages: "Языки",
+        languagesValue: "Узбекский, каракалпакский, русский, английский",
+        format: "Форма издания",
+        formatValue: "Традиционная (печатная)",
         directions: "Направления",
-        directionsValue: "Социальные, естественные и прикладные науки",
+        directionsValue: "Искусствоведение, филология, история, философия, педагогика, психология, социология, политология",
+        periodicity: "Периодичность",
+        periodicityValue: "",
+        date: "Дата издания",
+        dateValue: "",
+        aboutLeadOne: "Главный редактор — Nodirbek Sayfullayev",
+        aboutLeadTwo: "Заместитель главного редактора — Baxtiyor Yakubov",
+        aboutLeadThree: "Ответственный секретарь — Lazizaxon Axmataliyeva",
+        aboutLeadFour: "Дизайнер-вёрстка — Abdug'ani Mamasodiqov",
         journal: "Журнал",
         viewerTitle: "Просмотр последнего выпуска",
-        viewerIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        viewerIntro: "Ознакомьтесь с последним выпуском журнала (2025 год, № 4) прямо на этой странице. Доступны перелистывание страниц и полноэкранный режим.",
         fullscreen: "Полный экран",
         exitFullscreen: "Обычный экран",
         singlePage: "1 страница",
@@ -178,58 +187,59 @@ const translations = {
         softMode: "Мягкий",
         darkMode: "Ночной",
         requirementsTitle: "Основные требования для авторов",
-        requirementsIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        requirementsIntro: "Требования к научным статьям, представляемым в журнал, основаны на мировых стандартах и стандартах системы докторантуры (PhD и DSc) Узбекистана. Тема статьи должна соответствовать рубрикам журнала.",
         reqOne: "1. Объём текста",
-        reqOneDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        reqOneDesc: "Максимальный объём статьи — 8 страниц. Количество использованных источников — не менее 5–10.",
         reqTwo: "2. Структура",
-        reqTwoDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        reqTwoDesc: "Сведения об авторе, название (Title), аннотация (Abstract), ключевые слова, введение, основная часть, заключение и список литературы.",
         reqThree: "3. Языковое требование",
-        reqThreeDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        reqThreeDesc: "Статьи принимаются на узбекском, каракалпакском, русском или английском языках. Буквы o', g', q, h в узбекском тексте должны быть написаны полностью.",
         reqFour: "4. Формат",
-        reqFourDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        reqPointOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        reqPointTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        reqPointThree: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        reqPointFour: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        reqFourDesc: "«Times New Roman», кегль 14, интервал 1,5. Поля: слева 3 см, сверху и снизу 2 см, справа 1,5 см; абзац 1,25 см.",
+        reqPointOne: "Все статьи проверяются в системе «Антиплагиат».",
+        reqPointTwo: "Аннотация — не более 6 строк, ключевые слова — 8–10.",
+        reqPointThree: "Статьи, не отвечающие требованиям по заключению экспертов, не принимаются; редакция вправе вносить техническую правку.",
+        reqPointFour: "Стоимость редактирования и подготовки к печати — 400 000 сум.",
         archiveTitle: "Архив журнала",
-        archiveIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        archiveIntro: "Архив вышедших выпусков журнала. Каждый выпуск можно выбрать из списка ниже и читать в формате PDF.",
         archiveIssueA: "Выпуск 1",
-        archiveItemA1: "Lorem ipsum dolor sit amet",
-        archiveItemA2: "Lorem ipsum dolor sit amet",
+        archiveItemA1: "Сборник научных статей",
+        archiveItemA2: "В формате PDF",
         archiveIssueB: "Выпуск 4",
-        archiveItemB1: "Lorem ipsum dolor sit amet",
-        archiveItemB2: "Lorem ipsum dolor sit amet",
+        archiveItemB1: "Последний вышедший выпуск",
+        archiveItemB2: "Полный текст доступен в PDF",
         archiveIssueC: "Выпуск 3",
-        archiveItemC1: "Lorem ipsum dolor sit amet",
-        archiveItemC2: "Lorem ipsum dolor sit amet",
+        archiveItemC1: "Сборник научных статей",
+        archiveItemC2: "В формате PDF",
         editorialTitle: "Состав редколлегии",
-        editorialIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        editorialIntro: "Состав редакционной коллегии и общественного совета журнала. Ниже представлены руководство журнала и члены редколлегии.",
+        boardMembersTitle: "Члены редколлегии",
         chiefEditor: "Главный редактор",
-        deputyEditor: "Заместитель редактора",
+        deputyEditor: "Заместитель главного редактора",
         secretary: "Ответственный секретарь",
-        technicalEditor: "Технический редактор",
-        editorOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        editorTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        editorThree: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        editorFour: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        technicalEditor: "Дизайнер-вёрстка",
+        editorOne: "Ректор Государственного института искусств и культуры Узбекистана",
+        editorTwo: "Проректор по научной работе и инновациям",
+        editorThree: "Ответственный секретарь журнала",
+        editorFour: "Дизайнер-вёрстка журнала",
         sideCurrentIssue: "Текущий выпуск",
-        sideIssueText: "Lorem ipsum dolor sit amet",
-        sideIssueDate: "Lorem ipsum dolor sit amet",
-        sideIssueArticles: "Lorem ipsum dolor sit amet",
-        sideIssueTheme: "Lorem ipsum dolor sit amet",
+        sideIssueText: "Выпуск № 4",
+        sideIssueDate: "2025 год",
+        sideIssueArticles: "Полный текст в PDF",
+        sideIssueTheme: "Искусство, культура и педагогика",
         sideSubmission: "Отправить статью",
-        sideSubmissionText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        sideSubmissionText: "Статьи готовятся в соответствии с требованиями редакции. Стоимость редактирования и подготовки к печати — 400 000 сум.",
         sideLinks: "Быстрые ссылки",
         sideContacts: "Контакты",
-        sideAddress: "Lorem ipsum dolor sit amet"
+        sideAddress: "г. Ташкент, массив Яланғоч, ул. Зафар Диёр, 127-А"
     },
     en: {
         htmlLang: "en",
-        pageTitle: "O'zDSMI",
+        pageTitle: "O'zDSMI xabarlari",
         heroSubtitle: "",
-        heroTitle: "A modern journal space for research, articles and scientific dialogue",
-        heroDescription: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        noticeText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        heroTitle: "Bulletin of the Uzbekistan State Institute of Arts and Culture — a scientific-theoretical, practical-methodological and educational journal",
+        heroDescription: "The journal promotes research achievements in culture and the arts, presents new scientific and conceptual perspectives, and fosters dialogue among specialists in the field.",
+        noticeText: "The journal is included in the list of scientific publications recommended by the Presidium of the HAC of the Republic of Uzbekistan (decision No. 245/6 of 29 November 2017). ISSN 2181-8932.",
         statFrequency: "issues / year",
         statArticles: "articles / issue",
         statReviewers: "reviewers",
@@ -241,24 +251,28 @@ const translations = {
         breadcrumbJournal: "Journal",
         contentCaption: "Journal page",
         aboutTitle: "Journal activity and purpose",
-        aboutIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        aboutCopyOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-        aboutCopyTwo: "Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-        periodicity: "Periodicity",
-        periodicityValue: "Quarterly",
-        languages: "Languages",
-        languagesValue: "Uzbek, Russian, English",
-        format: "Publication format",
-        formatValue: "Electronic PDF and web archive",
+        aboutIntro: "The Bulletin of the Uzbekistan State Institute of Arts and Culture is a scientific-theoretical, practical-methodological and educational journal included in the HAC list of the Republic of Uzbekistan (ISSN 2181-8932). It promotes research achievements in the country's culture and arts.",
+        aboutCopyOne: "The journal publishes well-researched scholarly articles based on reliable sources in theatre and cinema, music, art history, philosophy and intangible cultural heritage, pedagogy and psychology.",
+        aboutCopyTwo: "The journal's main goals are to promote the policy of supporting science, publish the results of higher-education and research institutions, involve young researchers in scholarly work, and foster high spiritual and moral values.",
         founder: "Founder",
-        founderValue: "Academic Publications Center",
-        date: "Publication date",
-        dateValue: "Since 1998",
+        founderValue: "Uzbekistan State Institute of Arts and Culture",
+        languages: "Languages",
+        languagesValue: "Uzbek, Karakalpak, Russian, English",
+        format: "Publication format",
+        formatValue: "Traditional (print)",
         directions: "Scope",
-        directionsValue: "Social, natural and applied sciences",
+        directionsValue: "Art studies, philology, history, philosophy, pedagogy, psychology, sociology, political science",
+        periodicity: "Periodicity",
+        periodicityValue: "",
+        date: "Publication date",
+        dateValue: "",
+        aboutLeadOne: "Editor-in-Chief — Nodirbek Sayfullayev",
+        aboutLeadTwo: "Deputy Editor-in-Chief — Baxtiyor Yakubov",
+        aboutLeadThree: "Executive Secretary — Lazizaxon Axmataliyeva",
+        aboutLeadFour: "Layout Designer — Abdug'ani Mamasodiqov",
         journal: "Journal",
         viewerTitle: "View the latest issue",
-        viewerIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        viewerIntro: "Read the latest issue of the journal (2025, No. 4) directly on this page. Page flipping and fullscreen mode are available.",
         fullscreen: "Fullscreen",
         exitFullscreen: "Exit fullscreen",
         singlePage: "1 page",
@@ -274,50 +288,51 @@ const translations = {
         softMode: "Soft",
         darkMode: "Night",
         requirementsTitle: "Main requirements for authors",
-        requirementsIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        requirementsIntro: "The requirements for articles submitted to the journal are based on international standards and the standards of Uzbekistan's doctoral (PhD and DSc) research system. The topic must match the journal's sections.",
         reqOne: "1. Text length",
-        reqOneDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        reqOneDesc: "Maximum article length is 8 pages, with at least 5–10 references.",
         reqTwo: "2. Structure",
-        reqTwoDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        reqTwoDesc: "Author information, title, abstract, keywords, introduction, main part, conclusion and references.",
         reqThree: "3. Language requirement",
-        reqThreeDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        reqThreeDesc: "Articles are accepted in Uzbek, Karakalpak, Russian or English. The Uzbek letters o', g', q, h must be written in full.",
         reqFour: "4. Format",
-        reqFourDesc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        reqPointOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        reqPointTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        reqPointThree: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        reqPointFour: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        reqFourDesc: "Times New Roman, size 14, 1.5 line spacing. Margins: left 3 cm, top/bottom 2 cm, right 1.5 cm; indent 1.25 cm.",
+        reqPointOne: "All articles are checked in the Antiplagiat system.",
+        reqPointTwo: "Abstract up to 6 lines; 8–10 keywords.",
+        reqPointThree: "Articles that do not meet the requirements per expert review are not accepted; the editorial team may make technical edits.",
+        reqPointFour: "Editing and publication preparation fee — 400,000 UZS.",
         archiveTitle: "Journal archive",
-        archiveIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        archiveIntro: "Archive of the journal's published issues. Select an issue from the list below and read it in PDF format.",
         archiveIssueA: "Issue 1",
-        archiveItemA1: "Lorem ipsum dolor sit amet",
-        archiveItemA2: "Lorem ipsum dolor sit amet",
+        archiveItemA1: "Collection of scholarly articles",
+        archiveItemA2: "In PDF format",
         archiveIssueB: "Issue 4",
-        archiveItemB1: "Lorem ipsum dolor sit amet",
-        archiveItemB2: "Lorem ipsum dolor sit amet",
+        archiveItemB1: "Latest published issue",
+        archiveItemB2: "Full text available in PDF",
         archiveIssueC: "Issue 3",
-        archiveItemC1: "Lorem ipsum dolor sit amet",
-        archiveItemC2: "Lorem ipsum dolor sit amet",
+        archiveItemC1: "Collection of scholarly articles",
+        archiveItemC2: "In PDF format",
         editorialTitle: "Editorial board",
-        editorialIntro: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+        editorialIntro: "Composition of the journal's editorial board and public council. Below are the journal's leadership and editorial board members.",
+        boardMembersTitle: "Editorial board members",
         chiefEditor: "Editor-in-Chief",
-        deputyEditor: "Deputy Editor",
+        deputyEditor: "Deputy Editor-in-Chief",
         secretary: "Executive Secretary",
-        technicalEditor: "Technical Editor",
-        editorOne: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        editorTwo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        editorThree: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-        editorFour: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        technicalEditor: "Layout Designer",
+        editorOne: "Rector of the Uzbekistan State Institute of Arts and Culture",
+        editorTwo: "Vice-Rector for Research and Innovation",
+        editorThree: "Executive Secretary of the journal",
+        editorFour: "Layout Designer of the journal",
         sideCurrentIssue: "Current issue",
-        sideIssueText: "Lorem ipsum dolor sit amet",
-        sideIssueDate: "Lorem ipsum dolor sit amet",
-        sideIssueArticles: "Lorem ipsum dolor sit amet",
-        sideIssueTheme: "Lorem ipsum dolor sit amet",
+        sideIssueText: "Issue No. 4",
+        sideIssueDate: "2025",
+        sideIssueArticles: "Full text in PDF",
+        sideIssueTheme: "Arts, culture and pedagogy",
         sideSubmission: "Submit article",
-        sideSubmissionText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+        sideSubmissionText: "Articles are prepared in line with the editorial requirements. Editing and publication preparation fee — 400,000 UZS.",
         sideLinks: "Quick links",
         sideContacts: "Contact",
-        sideAddress: "Lorem ipsum dolor sit amet"
+        sideAddress: "Tashkent, Yalang'och, Zafar Diyor St., 127-A"
     }
 };
 
@@ -332,7 +347,12 @@ let readerTone = "normal";
 let scrollPositionBeforeFullscreen = 0;
 
 function t(key) {
-    return translations[currentLanguage]?.[key] || translations.uz[key] || key;
+    const value = translations[currentLanguage]?.[key];
+    if (value !== undefined) {
+        return value;
+    }
+    const fallback = translations.uz[key];
+    return fallback !== undefined ? fallback : key;
 }
 
 function getCurrentPanel() {
@@ -367,6 +387,7 @@ function setLanguage(language) {
 
     updateBreadcrumb();
     syncFullscreenButton();
+    renderBoardMembers();
 
     if (pdfDoc) {
         journalStatus.textContent = "";
@@ -395,6 +416,14 @@ function openTab(targetId) {
 
     if (window.innerWidth <= 900) {
         document.body.classList.remove("nav-open");
+    }
+
+    // The journal viewer renders at the wrong size while its tab is hidden, so
+    // render (or re-render) it once its panel is actually visible. Reading the
+    // shell width inside renderSpread forces layout, so the size is correct
+    // immediately after the panel switches to display: block.
+    if (pdfDoc && nextPanel.contains(bookShell)) {
+        renderSpread(spreadStart);
     }
 }
 
@@ -572,6 +601,14 @@ function updateViewerMeta(normalizedStart, rightPage, singlePageMode) {
 
 async function renderSpread(startPage) {
     if (!pdfDoc) {
+        return;
+    }
+
+    if (!bookShell.clientWidth) {
+        // The viewer lives inside a tab that is currently hidden, so its
+        // container has no width yet. Rendering now would fall back to a wrong
+        // page size; it re-renders correctly once its tab becomes visible.
+        spreadStart = normalizePageForMode(startPage);
         return;
     }
 
@@ -845,6 +882,63 @@ async function loadPdf() {
         console.error(error);
     }
 }
+
+const boardMembersList = document.getElementById("board-members-list");
+
+const boardMembers = [
+    { name: "Abduxalil Mavrulov", degree: { uz: "Tarix fanlari doktori, professor", ru: "доктор исторических наук, профессор", en: "Doctor of Historical Sciences, Professor" } },
+    { name: "Sarvinoz Qodirova", degree: { uz: "San'atshunoslik fanlari doktori, professor", ru: "доктор искусствоведения, профессор", en: "Doctor of Art Studies, Professor" } },
+    { name: "Munavvara Abdullayeva", degree: { uz: "O'zbekistonda xizmat ko'rsatgan yoshlar murabbiysi, professor", ru: "заслуженный наставник молодёжи Узбекистана, профессор", en: "Honored Youth Mentor of Uzbekistan, Professor" } },
+    { name: "Xamida Maxmudova", degree: { uz: "O'zbekistonda xizmat ko'rsatgan yoshlar murabbiysi, professor", ru: "заслуженный наставник молодёжи Узбекистана, профессор", en: "Honored Youth Mentor of Uzbekistan, Professor" } },
+    { name: "Amanulla Rizayev", degree: { uz: "San'atshunoslik fanlari nomzodi, professor", ru: "кандидат искусствоведения, профессор", en: "Candidate of Art Studies, Professor" } },
+    { name: "Xaytmatova Sabohat Agzamovna", degree: { uz: "San'atshunoslik fanlari nomzodi, professor", ru: "кандидат искусствоведения, профессор", en: "Candidate of Art Studies, Professor" } },
+    { name: "Fayziyeva Feruza Xadjimuradovna", degree: { uz: "San'atshunoslik fanlari nomzodi, professor", ru: "кандидат искусствоведения, профессор", en: "Candidate of Art Studies, Professor" } },
+    { name: "Sevara Malikova Samadovna", degree: { uz: "Pedagogika fanlari nomzodi, professor", ru: "кандидат педагогических наук, профессор", en: "Candidate of Pedagogical Sciences, Professor" } },
+    { name: "Go'zal Xalikulova", degree: { uz: "San'atshunoslik fanlari nomzodi, professor", ru: "кандидат искусствоведения, профессор", en: "Candidate of Art Studies, Professor" } },
+    { name: "Jahongir Mamatqosimov", degree: { uz: "Pedagogika fanlari bo'yicha falsafa doktori (PhD), professor", ru: "доктор философии (PhD) по педагогическим наукам, профессор", en: "Doctor of Philosophy (PhD) in Pedagogy, Professor" } },
+    { name: "Alieva Sadagat Aga Safar gizi", degree: { uz: "Xizmat ko'rsatgan madaniyat xodimi, dotsent", ru: "заслуженный работник культуры, доцент", en: "Honored Cultural Worker, Associate Professor" } },
+    { name: "Kerimova Sevil Alifettah gizi", degree: { uz: "San'atshunoslik fanlari bo'yicha falsafa doktori (PhD), dotsent", ru: "доктор философии (PhD) по искусствоведению, доцент", en: "Doctor of Philosophy (PhD) in Art Studies, Associate Professor" } },
+    { name: "Nishonboyeva Qunduz Vahobovna", degree: { uz: "Tarix fanlari nomzodi, dotsent", ru: "кандидат исторических наук, доцент", en: "Candidate of Historical Sciences, Associate Professor" } },
+    { name: "Antonina Kosheleva", degree: { uz: "Pedagogika fanlari nomzodi, dotsent", ru: "кандидат педагогических наук, доцент", en: "Candidate of Pedagogical Sciences, Associate Professor" } },
+    { name: "Hamdam Ismoilov", degree: { uz: "Filologiya fanlari nomzodi, dotsent", ru: "кандидат филологических наук, доцент", en: "Candidate of Philological Sciences, Associate Professor" } },
+    { name: "Mirali Maxmudov", degree: { uz: "Pedagogika fanlari nomzodi, dotsent", ru: "кандидат педагогических наук, доцент", en: "Candidate of Pedagogical Sciences, Associate Professor" } },
+    { name: "Ziyodulla Isoqov", degree: { uz: "Tarix fanlari nomzodi, dotsent", ru: "кандидат исторических наук, доцент", en: "Candidate of Historical Sciences, Associate Professor" } },
+    { name: "G'ani Xudoyev", degree: { uz: "San'atshunoslik fanlari bo'yicha falsafa doktori (PhD), dotsent", ru: "доктор философии (PhD) по искусствоведению, доцент", en: "Doctor of Philosophy (PhD) in Art Studies, Associate Professor" } },
+    { name: "Abdurahmonova Feruza Eshkobilovna", degree: { uz: "Filologiya fanlari bo'yicha falsafa doktori (PhD), dotsent", ru: "доктор философии (PhD) по филологическим наукам, доцент", en: "Doctor of Philosophy (PhD) in Philology, Associate Professor" } }
+];
+
+function renderBoardMembers() {
+    if (!boardMembersList) {
+        return;
+    }
+
+    boardMembersList.innerHTML = "";
+
+    boardMembers.forEach((member, index) => {
+        const item = document.createElement("li");
+        item.className = "board-member";
+
+        const order = document.createElement("span");
+        order.className = "board-member-index";
+        order.textContent = String(index + 1);
+
+        const body = document.createElement("div");
+        body.className = "board-member-body";
+
+        const name = document.createElement("span");
+        name.className = "board-member-name";
+        name.textContent = member.name;
+
+        const degree = document.createElement("span");
+        degree.className = "board-member-degree";
+        degree.textContent = member.degree[currentLanguage] || member.degree.uz;
+
+        body.append(name, degree);
+        item.append(order, body);
+        boardMembersList.append(item);
+    });
+}
+
 
 setLanguage(currentLanguage);
 loadPdf();

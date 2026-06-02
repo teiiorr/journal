@@ -140,6 +140,10 @@
         font-size: 20px;
     }
 
+    .plain-sections {
+        grid-template-columns: 1fr;
+    }
+
     .viewer-toolbar {
         flex-direction: column;
         align-items: stretch;

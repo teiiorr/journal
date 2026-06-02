@@ -1,16 +1,26 @@
 :root {
     --page-bg: #8ec0c6;
     --panel: #ffffff;
+    --panel-warm: #fcfaf6;
     --muted: #5d6c78;
-    --text: #1e2a33;
-    --border: #d9e0e4;
-    --border-soft: #e8edef;
+    --text: #28333c;
+    --ink: #1b2128;
+    --border: #dde2e6;
+    --border-soft: #e9edef;
     --maroon: #9f2d31;
-    --maroon-dark: #872428;
+    --maroon-dark: #7f2024;
     --blue: #3f78a9;
-    --green: #7aa531;
+    --green: #6f9a2e;
+    --gold: #b9923f;
+    --gold-soft: #d8c19a;
+    --font-display: "Montserrat", system-ui, -apple-system, sans-serif;
+    --font-sans: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
     --shadow-soft: 0 10px 28px rgba(29, 50, 66, 0.08);
-    --shadow-header: 0 14px 36px rgba(38, 58, 71, 0.12);
+    --shadow-header: 0 16px 40px rgba(38, 58, 71, 0.14);
+    --shadow-card: 0 12px 30px rgba(21, 36, 46, 0.09);
+    --shadow-hover: 0 22px 46px rgba(21, 36, 46, 0.17);
+    --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    --radius: 4px;
 }
 
 * {
@@ -27,13 +37,30 @@ body {
     min-height: 100vh;
     background: var(--page-bg);
     color: var(--text);
-    font-family: "Manrope", sans-serif;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.6;
+    letter-spacing: 0.002em;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body.nav-open {
     overflow: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-display);
+    color: var(--ink);
+    line-height: 1.18;
+    font-weight: 700;
+    letter-spacing: -0.018em;
 }
 
 button,
@@ -44,4 +71,29 @@ input {
 a {
     color: inherit;
     text-decoration: none;
+    transition: color 0.25s var(--ease);
+}
+
+::selection {
+    background: var(--maroon);
+    color: #fff;
+}
+
+:focus-visible {
+    outline: 2px solid var(--maroon);
+    outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.001ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.001ms !important;
+    }
 }
