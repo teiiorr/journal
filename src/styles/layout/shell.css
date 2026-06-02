@@ -18,6 +18,19 @@
     box-shadow: var(--shadow-header);
 }
 
+.site-footer {
+    margin-top: 26px;
+    padding-top: 18px;
+    text-align: left;
+}
+
+.site-footer .foot-credit {
+    font-size: 12px;
+    letter-spacing: 0.04em;
+    color: var(--muted);
+    opacity: 0.75;
+}
+
 .page-shell {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 360px;

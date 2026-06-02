@@ -112,7 +112,7 @@
 .banner-art {
     background:
         linear-gradient(rgba(24, 35, 42, 0.18), rgba(24, 35, 42, 0.18)),
-        url("/assets/dsmi.jpg") center/cover no-repeat,
+        url("/assets/oquv-bino.jpg") center/cover no-repeat,
         radial-gradient(circle at 25% 30%, rgba(255, 255, 255, 0.25), transparent 18%),
         radial-gradient(circle at 70% 60%, rgba(0, 0, 0, 0.18), transparent 26%),
         linear-gradient(135deg, rgba(255, 255, 255, 0.16), transparent 45%),
