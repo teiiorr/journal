@@ -26,7 +26,33 @@ const readerToneButtons = document.querySelectorAll("[data-reader-tone]");
 const languageButtons = document.querySelectorAll("[data-lang]");
 const languageShortLinks = document.querySelectorAll("[data-lang-short]");
 
-const PDF_URL = "/assets/journal/4-son-2025.pdf";
+const archiveContainer = document.getElementById("archive-issues");
+const pdfLink = document.getElementById("pdf-link");
+const viewerCurrentIssue = document.getElementById("viewer-current-issue");
+
+// All published issues, newest first.
+const JOURNAL_ISSUES = [
+    { year: 2026, issue: 1 },
+    { year: 2025, issue: 4 },
+    { year: 2025, issue: 3 },
+    { year: 2025, issue: 2 },
+    { year: 2025, issue: 1 },
+    { year: 2024, issue: 4 },
+    { year: 2024, issue: 3 },
+    { year: 2024, issue: 2 },
+    { year: 2024, issue: 1 },
+    { year: 2023, issue: 4 },
+    { year: 2023, issue: 3 },
+    { year: 2023, issue: 2 },
+    { year: 2023, issue: 1 },
+    { year: 2022, issue: 4 },
+    { year: 2022, issue: 3 },
+    { year: 2022, issue: 2 },
+    { year: 2022, issue: 1 }
+].map((entry) => ({ ...entry, file: `/assets/journal/${entry.year}-${entry.issue}.pdf` }));
+
+let currentIssue = JOURNAL_ISSUES[0];
+let PDF_URL = currentIssue.file;
 const PDF_PAGE_WIDTH = 595.276;
 const PDF_PAGE_HEIGHT = 841.89;
 
@@ -70,8 +96,9 @@ const translations = {
         aboutLeadThree: "Mas'ul kotib — Lazizaxon Axmataliyeva",
         aboutLeadFour: "Sahifalovchi dizayner — Abdug'ani Mamasodiqov",
         journal: "Jurnal",
-        viewerTitle: "So'nggi sonni ko'rish",
-        viewerIntro: "Jurnalning so'nggi soni (2025-yil, 4-son) bilan to'g'ridan-to'g'ri shu sahifada tanishing. Sahifalarni varaqlash yoki to'liq ekran rejimidan foydalanishingiz mumkin.",
+        viewerTitle: "Jurnal sonini o'qish",
+        viewerIntro: "Tanlangan sonni to'g'ridan-to'g'ri shu sahifada o'qing. Sahifalarni varaqlash yoki to'liq ekran rejimidan foydalanishingiz mumkin.",
+        issueWord: "son",
         fullscreen: "To'liq ekran",
         exitFullscreen: "Oddiy ekran",
         singlePage: "1 sahifa",
@@ -123,8 +150,8 @@ const translations = {
         editorThree: "Jurnalning mas'ul kotibi",
         editorFour: "Jurnal sahifalovchi dizayneri",
         sideCurrentIssue: "Joriy son",
-        sideIssueText: "4-son",
-        sideIssueDate: "2025-yil",
+        sideIssueText: "1-son",
+        sideIssueDate: "2026-yil",
         sideIssueArticles: "To'liq matn PDF formatda",
         sideIssueTheme: "San'at, madaniyat va pedagogika",
         sideSubmission: "Maqola yuborish",
@@ -172,8 +199,9 @@ const translations = {
         aboutLeadThree: "Ответственный секретарь — Lazizaxon Axmataliyeva",
         aboutLeadFour: "Дизайнер-вёрстка — Abdug'ani Mamasodiqov",
         journal: "Журнал",
-        viewerTitle: "Просмотр последнего выпуска",
-        viewerIntro: "Ознакомьтесь с последним выпуском журнала (2025 год, № 4) прямо на этой странице. Доступны перелистывание страниц и полноэкранный режим.",
+        viewerTitle: "Просмотр выпуска",
+        viewerIntro: "Читайте выбранный выпуск прямо на этой странице. Доступны перелистывание страниц и полноэкранный режим.",
+        issueWord: "№",
         fullscreen: "Полный экран",
         exitFullscreen: "Обычный экран",
         singlePage: "1 страница",
@@ -225,8 +253,8 @@ const translations = {
         editorThree: "Ответственный секретарь журнала",
         editorFour: "Дизайнер-вёрстка журнала",
         sideCurrentIssue: "Текущий выпуск",
-        sideIssueText: "Выпуск № 4",
-        sideIssueDate: "2025 год",
+        sideIssueText: "Выпуск № 1",
+        sideIssueDate: "2026 год",
         sideIssueArticles: "Полный текст в PDF",
         sideIssueTheme: "Искусство, культура и педагогика",
         sideSubmission: "Отправить статью",
@@ -327,8 +355,8 @@ const translations = {
         editorThree: "Executive Secretary of the journal",
         editorFour: "Layout Designer of the journal",
         sideCurrentIssue: "Current issue",
-        sideIssueText: "Issue No. 4",
-        sideIssueDate: "2025",
+        sideIssueText: "Issue No. 1",
+        sideIssueDate: "2026",
         sideIssueArticles: "Full text in PDF",
         sideIssueTheme: "Arts, culture and pedagogy",
         sideSubmission: "Submit article",
@@ -342,6 +370,7 @@ const translations = {
 let pdfDoc = null;
 let totalPages = 0;
 let spreadStart = 1;
+let pdfLoadToken = 0;
 let isRendering = false;
 let queuedSpread = null;
 let currentViewMode = window.innerWidth <= 780 ? "single" : "spread";
@@ -391,6 +420,11 @@ function setLanguage(language) {
     updateBreadcrumb();
     syncFullscreenButton();
     renderBoardMembers();
+
+    archiveContainer?.querySelectorAll(".issue-chip").forEach((chip) => {
+        chip.textContent = formatIssueShort(Number(chip.dataset.issue));
+    });
+    syncCurrentIssueLabel();
 
     if (pdfDoc) {
         journalStatus.textContent = "";
@@ -874,16 +908,111 @@ async function loadPdf() {
 
     pdfjsLib.GlobalWorkerOptions.workerSrc = "/assets/vendor/pdf.worker.min.js";
 
+    // Reset viewer state so switching between issues starts clean. Each load
+    // bumps a token; only the latest request renders, so picking another issue
+    // before the current (often large) PDF finishes doesn't leave a stale page.
+    const myToken = ++pdfLoadToken;
+    pdfDoc = null;
+    totalPages = 0;
+    spreadStart = 1;
+    journalStatus.textContent = t("pdfLoading");
+
     try {
         const loadingTask = pdfjsLib.getDocument(PDF_URL);
-        pdfDoc = await loadingTask.promise;
-        totalPages = pdfDoc.numPages;
+        const loadedDoc = await loadingTask.promise;
+        if (myToken !== pdfLoadToken) {
+            loadedDoc.destroy();
+            return;
+        }
+        pdfDoc = loadedDoc;
+        totalPages = loadedDoc.numPages;
         pageInput.max = String(totalPages);
         await renderSpread(1);
     } catch (error) {
-        journalStatus.textContent = t("pdfOpenError");
+        if (myToken === pdfLoadToken) {
+            journalStatus.textContent = t("pdfOpenError");
+        }
         console.error(error);
     }
+}
+
+function formatIssueShort(issue) {
+    if (currentLanguage === "uz") return `${issue}-son`;
+    if (currentLanguage === "ru") return `№ ${issue}`;
+    return `No. ${issue}`;
+}
+
+function formatIssueLabel(entry) {
+    return currentLanguage === "uz"
+        ? `${entry.year}-yil, ${entry.issue}-son`
+        : `${entry.year} · ${formatIssueShort(entry.issue)}`;
+}
+
+function syncCurrentIssueLabel() {
+    if (viewerCurrentIssue) {
+        viewerCurrentIssue.textContent = formatIssueLabel(currentIssue);
+    }
+    if (pdfLink) {
+        pdfLink.href = currentIssue.file;
+    }
+    if (archiveContainer) {
+        archiveContainer.querySelectorAll(".issue-chip").forEach((chip) => {
+            const active = chip.dataset.file === currentIssue.file;
+            chip.classList.toggle("is-active", active);
+            chip.setAttribute("aria-pressed", String(active));
+        });
+    }
+}
+
+async function selectIssue(entry, { scroll = false } = {}) {
+    currentIssue = entry;
+    PDF_URL = entry.file;
+    syncCurrentIssueLabel();
+    if (scroll && journalViewer) {
+        journalViewer.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+    await loadPdf();
+}
+
+function renderArchive() {
+    if (!archiveContainer) {
+        return;
+    }
+
+    archiveContainer.innerHTML = "";
+
+    const years = [...new Set(JOURNAL_ISSUES.map((entry) => entry.year))];
+
+    years.forEach((year) => {
+        const yearBlock = document.createElement("div");
+        yearBlock.className = "archive-year";
+
+        const label = document.createElement("div");
+        label.className = "archive-year-label";
+        label.textContent = String(year);
+
+        const issues = document.createElement("div");
+        issues.className = "archive-year-issues";
+
+        JOURNAL_ISSUES
+            .filter((entry) => entry.year === year)
+            .forEach((entry) => {
+                const chip = document.createElement("button");
+                chip.type = "button";
+                chip.className = "issue-chip";
+                chip.dataset.file = entry.file;
+                chip.dataset.issue = String(entry.issue);
+                chip.setAttribute("aria-pressed", "false");
+                chip.textContent = formatIssueShort(entry.issue);
+                chip.addEventListener("click", () => selectIssue(entry, { scroll: true }));
+                issues.append(chip);
+            });
+
+        yearBlock.append(label, issues);
+        archiveContainer.append(yearBlock);
+    });
+
+    syncCurrentIssueLabel();
 }
 
 const boardMembersList = document.getElementById("board-members-list");
@@ -944,7 +1073,8 @@ function renderBoardMembers() {
 
 
 setLanguage(currentLanguage);
-loadPdf();
+renderArchive();
+selectIssue(currentIssue);
 syncFullscreenButton();
 syncViewModeUI();
 syncReaderControls();
