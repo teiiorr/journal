@@ -184,6 +184,9 @@
 
 .nav-button {
     position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     min-height: 62px;
     padding: 0 28px;
     border: 0;
@@ -195,6 +198,8 @@
     font-weight: 700;
     letter-spacing: 0.08em;
     text-transform: uppercase;
+    text-decoration: none;
+    line-height: 1;
     cursor: pointer;
     transition: background 0.3s var(--ease), color 0.3s var(--ease);
 }
