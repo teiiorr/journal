@@ -8,7 +8,7 @@
     <meta name="author" content="O'zbekiston davlat san'at va madaniyat instituti">
     <meta name="robots" content="index, follow, max-image-preview:large">
     <meta name="googlebot" content="index, follow">
-    <link rel="canonical" href="https://uzsiac-news.uz/">
+    <link rel="canonical" href="https://uzsiac-bulletin.uz/">
     <link rel="icon" href="/assets/logo.png">
 
     <!-- Open Graph / social -->
@@ -16,15 +16,15 @@
     <meta property="og:site_name" content="O'zDSMI xabarlari">
     <meta property="og:title" content="O'zbekiston davlat san'at va madaniyat instituti xabarlari">
     <meta property="og:description" content="OAK ro'yxatidagi ilmiy jurnal. ISSN 2181-8932. Ochiq foydalanishdagi ilmiy elektron nashr.">
-    <meta property="og:url" content="https://uzsiac-news.uz/">
-    <meta property="og:image" content="https://uzsiac-news.uz/assets/oquv-bino.jpg">
+    <meta property="og:url" content="https://uzsiac-bulletin.uz/">
+    <meta property="og:image" content="https://uzsiac-bulletin.uz/assets/oquv-bino.jpg">
     <meta property="og:locale" content="uz_UZ">
     <meta property="og:locale:alternate" content="ru_RU">
     <meta property="og:locale:alternate" content="en_US">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="O'zbekiston davlat san'at va madaniyat instituti xabarlari">
     <meta name="twitter:description" content="OAK ro'yxatidagi ilmiy jurnal. ISSN 2181-8932.">
-    <meta name="twitter:image" content="https://uzsiac-news.uz/assets/oquv-bino.jpg">
+    <meta name="twitter:image" content="https://uzsiac-bulletin.uz/assets/oquv-bino.jpg">
 
     <!-- Google Scholar / Highwire Press citation metadata -->
     <meta name="citation_journal_title" content="O'zbekiston davlat san'at va madaniyat instituti xabarlari">
@@ -36,10 +36,10 @@
     <meta name="citation_publication_date" content="2026">
     <meta name="citation_date" content="2026">
     <meta name="citation_language" content="uz">
-    <meta name="citation_abstract_html_url" content="https://uzsiac-news.uz/">
-    <meta name="citation_pdf_url" content="https://uzsiac-news.uz/assets/journal/2026-1.pdf">
+    <meta name="citation_abstract_html_url" content="https://uzsiac-bulletin.uz/">
+    <meta name="citation_pdf_url" content="https://uzsiac-bulletin.uz/assets/journal/2026-1.pdf">
     <!-- Future DOI (after Crossref registration), add per issue, e.g.:
-    <meta name="citation_doi" content="10.XXXXX/uzsiac-news.2026.1"> -->
+    <meta name="citation_doi" content="10.XXXXX/uzsiac-bulletin.2026.1"> -->
 
     <!-- Dublin Core -->
     <meta name="DC.title" content="O'zbekiston davlat san'at va madaniyat instituti xabarlari">
@@ -59,17 +59,17 @@
       "alternateName": "O'zDSMI xabarlari",
       "issn": "2181-8932",
       "inLanguage": ["uz", "ru", "en"],
-      "url": "https://uzsiac-news.uz/",
+      "url": "https://uzsiac-bulletin.uz/",
       "publisher": {
         "@type": "Organization",
         "name": "O'zbekiston davlat san'at va madaniyat instituti",
-        "url": "https://uzsiac-news.uz/"
+        "url": "https://uzsiac-bulletin.uz/"
       },
       "hasPart": {
         "@type": "PublicationIssue",
         "issueNumber": "1",
         "datePublished": "2026",
-        "url": "https://uzsiac-news.uz/assets/journal/2026-1.pdf"
+        "url": "https://uzsiac-bulletin.uz/assets/journal/2026-1.pdf"
       }
     }
     </script>
@@ -123,6 +123,7 @@
             <nav class="top-nav" aria-label="Jurnal bo'limlari" id="sidebar">
                 <button class="nav-button active" type="button" data-tab="jurnal-haqida" data-i18n="navAbout">Jurnal haqida</button>
                 <button class="nav-button" type="button" data-tab="talablar" data-i18n="navRequirements">Talablar</button>
+                <button class="nav-button" type="button" data-tab="maqolalar" data-i18n="navArticles">Maqolalar</button>
                 <button class="nav-button" type="button" data-tab="arxiv" data-i18n="navArchive">Arxiv</button>
                 <button class="nav-button" type="button" data-tab="redkollegiya" data-i18n="navEditorial">Tahrir hay'ati</button>
 
@@ -206,6 +207,26 @@
                         <li data-i18n="reqPointThree">Ekspert xulosasiga ko'ra talabga javob bermaydigan maqolalar qabul qilinmaydi; tahririyat texnik tahrir huquqiga ega.</li>
                         <li data-i18n="reqPointFour">Tahrir va nashrga tayyorlash narxi — 300 ming so'm.</li>
                     </ol>
+                </section>
+
+                <section class="tab-panel" id="maqolalar" data-label-key="navArticles" data-label="Maqolalar">
+                    <h3 class="section-title" data-i18n="articlesTitle">Maqolalar</h3>
+                    <p class="lead-paragraph" data-i18n="articlesIntro">Alohida ilmiy maqolalarni yuklab olishingiz mumkin. Mualliflar, sonlar va kalit so'zlar bo'yicha filtrlang.</p>
+
+                    <div class="articles-toolbar">
+                        <input id="articles-search" type="search" placeholder="Sarlavha yoki muallif..." data-i18n-attr="placeholder" data-i18n="articlesSearchPlaceholder">
+                        <select id="articles-year"><option value="">Yil</option></select>
+                        <select id="articles-language">
+                            <option value="">Til</option>
+                            <option value="uz">O'zbek</option>
+                            <option value="kaa">Qoraqalpoq</option>
+                            <option value="ru">Rus</option>
+                            <option value="en">Ingliz</option>
+                        </select>
+                    </div>
+
+                    <div id="articles-grid" class="articles-grid" aria-live="polite"></div>
+                    <div id="articles-empty" class="articles-empty" hidden data-i18n="articlesEmpty">Hozircha maqolalar yo'q.</div>
                 </section>
 
                 <section class="tab-panel" id="arxiv" data-label-key="navArchive" data-label="Arxiv">
@@ -409,6 +430,10 @@
                 </section>
             </aside>
         </div>
+
+        <footer class="site-footer">
+            <p class="foot-credit">Designed &amp; developed by <a href="https://teiior.uz" target="_blank" rel="noopener noreferrer">teiior</a></p>
+        </footer>
     </div>
 
     <script src="/assets/vendor/pdf.min.js"></script>

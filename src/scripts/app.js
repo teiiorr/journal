@@ -70,8 +70,19 @@ const translations = {
         statReviewers: "ekspert",
         navAbout: "Jurnal haqida",
         navRequirements: "Talablar",
+        navArticles: "Maqolalar",
         navArchive: "Arxiv",
         navEditorial: "Tahrir hay'ati",
+        articlesTitle: "Maqolalar",
+        articlesIntro: "Alohida ilmiy maqolalarni yuklab olishingiz mumkin. Mualliflar, sonlar va kalit so'zlar bo'yicha filtrlang.",
+        articlesSearchPlaceholder: "Sarlavha yoki muallif...",
+        articlesEmpty: "Hozircha maqolalar yo'q.",
+        articlesLoading: "Maqolalar yuklanmoqda...",
+        articlesReadPdf: "PDF",
+        articlesReadFull: "To'liq matn",
+        articlesPages: "b.",
+        articlesYearAll: "Yil",
+        articlesLangAll: "Til",
         breadcrumbHome: "Asosiy sahifa",
         breadcrumbJournal: "Jurnal",
         contentCaption: "Jurnal sahifasi",
@@ -173,8 +184,19 @@ const translations = {
         statReviewers: "экспертов",
         navAbout: "О журнале",
         navRequirements: "Требования",
+        navArticles: "Статьи",
         navArchive: "Архив",
         navEditorial: "Редколлегия",
+        articlesTitle: "Статьи",
+        articlesIntro: "Скачивайте отдельные научные статьи. Фильтруйте по авторам, выпускам и ключевым словам.",
+        articlesSearchPlaceholder: "Название или автор...",
+        articlesEmpty: "Пока нет статей.",
+        articlesLoading: "Загрузка статей...",
+        articlesReadPdf: "PDF",
+        articlesReadFull: "Полный текст",
+        articlesPages: "с.",
+        articlesYearAll: "Год",
+        articlesLangAll: "Язык",
         breadcrumbHome: "Главная",
         breadcrumbJournal: "Журнал",
         contentCaption: "Страница журнала",
@@ -276,8 +298,19 @@ const translations = {
         statReviewers: "reviewers",
         navAbout: "About Journal",
         navRequirements: "Requirements",
+        navArticles: "Articles",
         navArchive: "Archive",
         navEditorial: "Editorial Board",
+        articlesTitle: "Articles",
+        articlesIntro: "Download individual scholarly articles. Filter by author, issue and keywords.",
+        articlesSearchPlaceholder: "Title or author...",
+        articlesEmpty: "No articles yet.",
+        articlesLoading: "Loading articles...",
+        articlesReadPdf: "PDF",
+        articlesReadFull: "Full text",
+        articlesPages: "pp.",
+        articlesYearAll: "Year",
+        articlesLangAll: "Language",
         breadcrumbHome: "Home",
         breadcrumbJournal: "Journal",
         contentCaption: "Journal page",
@@ -429,6 +462,8 @@ function setLanguage(language) {
     if (pdfDoc) {
         journalStatus.textContent = "";
     }
+
+    document.dispatchEvent(new CustomEvent("journal:language-changed", { detail: { language: currentLanguage } }));
 }
 
 function openTab(targetId) {
@@ -1078,3 +1113,12 @@ selectIssue(currentIssue);
 syncFullscreenButton();
 syncViewModeUI();
 syncReaderControls();
+
+// Public articles listing (Supabase-backed).
+import("./articles-public.js")
+    .then((mod) => {
+        mod.initArticlesPublic(() => translations[currentLanguage] || translations.uz);
+        document.addEventListener("journal:language-changed", () => mod.refreshArticlesTranslations());
+        mod.refreshArticlesTranslations();
+    })
+    .catch((err) => console.warn("[articles-public]", err));

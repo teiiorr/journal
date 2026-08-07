@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://uzsiac-news.uz/sitemap.xml
+Sitemap: https://uzsiac-bulletin.uz/sitemap.xml

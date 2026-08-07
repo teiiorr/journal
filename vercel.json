@@ -1,0 +1,30 @@
+{
+    "rewrites": [
+        {
+            "source": "/",
+            "has": [{ "type": "host", "value": "admin.uzsiac-bulletin.uz" }],
+            "destination": "/admin.html"
+        },
+        { "source": "/maqola/:slug", "destination": "/api/article/:slug" },
+        { "source": "/maqola/:slug/", "destination": "/api/article/:slug" }
+    ],
+    "redirects": [
+        {
+            "source": "/admin",
+            "destination": "/admin.html",
+            "permanent": false
+        },
+        {
+            "source": "/admin.html",
+            "has": [{ "type": "host", "value": "uzsiac-bulletin.uz" }],
+            "destination": "https://admin.uzsiac-bulletin.uz/",
+            "permanent": false
+        },
+        {
+            "source": "/admin.html",
+            "has": [{ "type": "host", "value": "www.uzsiac-bulletin.uz" }],
+            "destination": "https://admin.uzsiac-bulletin.uz/",
+            "permanent": false
+        }
+    ]
+}

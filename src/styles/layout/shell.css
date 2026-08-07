@@ -31,6 +31,19 @@
     opacity: 0.75;
 }
 
+.site-footer .foot-credit a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.site-footer .foot-credit a:hover {
+    color: var(--maroon);
+    opacity: 1;
+}
+
 .page-shell {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 360px;
