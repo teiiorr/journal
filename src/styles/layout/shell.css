@@ -19,29 +19,32 @@
 }
 
 .site-footer {
+    background: #1a1815;
     margin-top: 26px;
-    padding-top: 18px;
-    text-align: left;
+    padding: 18px 24px;
+    text-align: center;
 }
 
 .site-footer .foot-credit {
-    font-size: 12px;
+    margin: 0;
+    font-size: 13px;
     letter-spacing: 0.04em;
-    color: var(--muted);
-    opacity: 0.75;
+    color: #ffffff;
+    font-weight: 700;
+    opacity: 1;
 }
 
 .site-footer .foot-credit a {
-    color: inherit;
+    color: #ffffff;
+    font-weight: 700;
     text-decoration: underline;
     text-decoration-thickness: 1px;
     text-underline-offset: 3px;
-    transition: color 0.2s ease, opacity 0.2s ease;
+    transition: color 0.2s ease;
 }
 
 .site-footer .foot-credit a:hover {
-    color: var(--maroon);
-    opacity: 1;
+    color: var(--gold);
 }
 
 .page-shell {

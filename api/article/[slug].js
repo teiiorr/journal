@@ -43,9 +43,31 @@ const STYLES = `
         --maroon: #8a2226;
         --maroon-dark: #6b1a1e;
         --gold: #a8842f;
+        --footer-bg: #1a1815;
+        --footer-text: #ffffff;
         --serif: "Source Serif 4", "Source Serif Pro", "Georgia", serif;
         --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
     }
+    :root[data-theme="dark"] {
+        color-scheme: dark;
+        --paper: #14100d;
+        --paper-2: #1a1612;
+        --ink: #f5efe0;
+        --ink-2: #e0dac9;
+        --muted: #9a9081;
+        --hair: #2f2820;
+        --hair-2: #3a3227;
+        --maroon: #e07176;
+        --maroon-dark: #c85a5f;
+        --gold: #d4a952;
+        --footer-bg: #0a0806;
+        --footer-text: #ffffff;
+    }
+    :root[data-theme="dark"] body { background: var(--paper); color: var(--ink-2); }
+    :root[data-theme="dark"] .theme-toggle .sun { display: inline; }
+    :root[data-theme="dark"] .theme-toggle .moon { display: none; }
+    .theme-toggle .sun { display: none; }
+    .theme-toggle .moon { display: inline; }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
@@ -103,6 +125,23 @@ const STYLES = `
         max-width: 1180px; margin: 0 auto;
         display: flex; flex-wrap: wrap;
         justify-content: center;
+        position: relative;
+    }
+    .theme-toggle {
+        position: absolute; right: 1rem; top: 50%;
+        transform: translateY(-50%);
+        background: transparent; border: 1px solid var(--hair);
+        border-radius: 999px;
+        padding: 0.375rem 0.625rem;
+        cursor: pointer; color: var(--muted);
+        font-size: 0.875rem; line-height: 1;
+        transition: color 0.2s, border-color 0.2s;
+        display: inline-flex; align-items: center; justify-content: center;
+        min-width: 2rem; min-height: 2rem;
+    }
+    .theme-toggle:hover { color: var(--maroon); border-color: var(--maroon); }
+    @media (max-width: 720px) {
+        .theme-toggle { position: relative; right: auto; top: auto; transform: none; margin: 0.5rem; }
     }
     .top-nav a {
         display: inline-flex; align-items: center; justify-content: center;
@@ -322,8 +361,8 @@ const STYLES = `
 
     /* Footer */
     .site-footer {
-        border-top: 1px solid var(--hair);
-        padding: 2.25rem 2rem;
+        background: var(--footer-bg);
+        padding: 1.5rem 2rem;
         margin-top: 4rem;
     }
     .footer-inner {
@@ -331,12 +370,18 @@ const STYLES = `
         display: flex; justify-content: space-between; align-items: center;
         flex-wrap: wrap; gap: 1rem;
         font-family: var(--sans);
-        font-size: 0.75rem;
-        color: var(--muted);
-        letter-spacing: 0.05em;
+        font-size: 0.8125rem; letter-spacing: 0.04em;
+        color: var(--footer-text);
+        font-weight: 700;
     }
-    .footer-inner a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
-    .footer-inner a:hover { color: var(--maroon); }
+    .footer-inner .footer-copy { font-weight: 500; opacity: 0.7; }
+    .footer-inner a {
+        color: var(--footer-text);
+        font-weight: 700;
+        text-decoration: underline; text-underline-offset: 3px;
+        transition: color 0.2s;
+    }
+    .footer-inner a:hover { color: var(--gold); }
 
     @media (max-width: 720px) {
         body { font-size: 18px; }
@@ -473,6 +518,14 @@ ${keywordsMeta}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        (function(){
+            try {
+                var t = localStorage.getItem("maqola-theme");
+                if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+            } catch(e) {}
+        })();
+    </script>
     <style>${STYLES}</style>
 </head>
 <body>
@@ -496,6 +549,10 @@ ${keywordsMeta}
             <a href="/maqola" class="is-current">Maqolalar</a>
             <a href="/#arxiv">Arxiv</a>
             <a href="/#redkollegiya">Tahrir hay'ati</a>
+            <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Rejimni almashtirish">
+                <span class="moon" aria-hidden="true">☾</span>
+                <span class="sun" aria-hidden="true">☀</span>
+            </button>
         </div>
     </nav>
 
@@ -531,10 +588,22 @@ ${keywordsMeta}
 
     <footer class="site-footer">
         <div class="footer-inner">
-            <span>© ${esc(PUBLISHER)}</span>
+            <span class="footer-copy">© ${esc(PUBLISHER)}</span>
             <span>Designed &amp; developed by <a href="https://teiior.uz" target="_blank" rel="noopener noreferrer">teiior</a></span>
         </div>
     </footer>
+
+    <script>
+        (function () {
+            var btn = document.getElementById("theme-toggle");
+            if (btn) btn.addEventListener("click", function () {
+                var current = document.documentElement.getAttribute("data-theme") || "light";
+                var next = current === "dark" ? "light" : "dark";
+                document.documentElement.setAttribute("data-theme", next);
+                try { localStorage.setItem("maqola-theme", next); } catch(e) {}
+            });
+        })();
+    </script>
 </body>
 </html>`;
 }
