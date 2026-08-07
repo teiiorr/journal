@@ -30,6 +30,203 @@ function pdfUrl(article) {
     return null;
 }
 
+const STYLES = `
+    :root {
+        color-scheme: light;
+        --page-bg: #8ec0c6;
+        --panel: #ffffff;
+        --panel-warm: #fcfaf6;
+        --muted: #5d6c78;
+        --text: #28333c;
+        --ink: #1b2128;
+        --border: #dde2e6;
+        --border-soft: #e9edef;
+        --maroon: #9f2d31;
+        --maroon-dark: #7f2024;
+        --gold: #b9923f;
+        --green: #7dad2f;
+    }
+    * { box-sizing: border-box; }
+    html, body { margin: 0; padding: 0; }
+    body {
+        background: var(--page-bg);
+        color: var(--text);
+        font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
+        line-height: 1.65;
+        min-height: 100vh;
+    }
+    .site-shell {
+        width: min(1160px, calc(100% - 36px));
+        margin: 0 auto 44px;
+        background: var(--panel);
+        box-shadow: 0 16px 40px rgba(38, 58, 71, 0.14);
+    }
+    .masthead-strip {
+        background: var(--panel-warm);
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        padding: 18px 32px;
+        border-bottom: 1px solid var(--border-soft);
+    }
+    .masthead-strip a.brand { display: flex; align-items: center; gap: 14px; text-decoration: none; color: inherit; }
+    .masthead-strip img { width: 44px; height: 44px; object-fit: contain; }
+    .masthead-strip .brand-title { font-weight: 800; font-size: 15px; color: var(--ink); letter-spacing: -0.005em; }
+    .masthead-strip .brand-sub { font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); display: block; margin-top: 2px; }
+    .top-nav {
+        display: flex;
+        flex-wrap: wrap;
+        background: rgba(150, 64, 82, 0.97);
+    }
+    .top-nav a {
+        min-height: 62px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 28px;
+        border-right: 1px solid rgba(255, 255, 255, 0.14);
+        color: rgba(255, 255, 255, 0.9);
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        text-decoration: none;
+        transition: background 0.25s, color 0.25s;
+    }
+    .top-nav a:hover { background: rgba(255, 255, 255, 0.1); color: #fff; }
+    .top-nav a.is-current { background: rgba(255, 255, 255, 0.14); color: #fff; }
+
+    .content { padding: 36px 42px 50px; }
+    .breadcrumb {
+        display: flex; flex-wrap: wrap; gap: 9px;
+        font-size: 12.5px; font-weight: 600; letter-spacing: 0.04em;
+        text-transform: uppercase; color: var(--muted); margin-bottom: 22px;
+    }
+    .breadcrumb a { color: var(--muted); text-decoration: none; }
+    .breadcrumb a:hover { color: var(--maroon); }
+    .breadcrumb strong { color: var(--maroon); font-weight: 800; }
+
+    .article-header {
+        padding-bottom: 26px;
+        border-bottom: 2px solid var(--border-soft);
+        margin-bottom: 28px;
+    }
+    .article-meta-strip {
+        display: inline-block;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        color: var(--maroon);
+        font-weight: 800;
+        margin-bottom: 10px;
+    }
+    h1.article-title {
+        margin: 0 0 16px;
+        font-size: clamp(24px, 2.6vw, 34px);
+        line-height: 1.2;
+        letter-spacing: -0.01em;
+        color: var(--ink);
+        font-weight: 800;
+    }
+    .article-rubric {
+        display: inline-block;
+        padding: 4px 12px;
+        border: 1px solid var(--gold);
+        color: var(--gold);
+        font-size: 11px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        font-weight: 700;
+        border-radius: 3px;
+    }
+    .article-authors {
+        display: grid;
+        gap: 12px;
+        margin: 24px 0;
+        padding: 20px 22px;
+        background: var(--panel-warm);
+        border-left: 3px solid var(--gold);
+        border-radius: 3px;
+    }
+    .author { display: grid; gap: 4px; font-size: 14px; }
+    .author strong { font-size: 15.5px; color: var(--ink); font-weight: 700; }
+    .author span { color: var(--muted); font-style: italic; }
+    .author a { color: var(--maroon); text-decoration: none; font-size: 13px; }
+    .author a:hover { text-decoration: underline; }
+
+    h2.section-title {
+        font-size: 15px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        color: var(--maroon);
+        font-weight: 800;
+        margin: 32px 0 12px;
+        padding-bottom: 8px;
+        border-bottom: 1px solid var(--border-soft);
+    }
+
+    .article-abstract p, .article-keywords p {
+        color: var(--text);
+        font-size: 15.5px;
+        line-height: 1.75;
+        margin: 0;
+    }
+    .article-keywords p { font-style: italic; color: var(--muted); }
+
+    .article-doi { font-size: 14px; margin: 12px 0; color: var(--muted); }
+    .article-doi a { color: var(--maroon); font-weight: 600; text-decoration: none; }
+    .article-doi a:hover { text-decoration: underline; }
+
+    .article-pdf {
+        display: flex; align-items: center; gap: 14px;
+        margin: 32px 0;
+        padding: 22px 24px;
+        background: linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
+        border-radius: 4px;
+        color: #fff;
+    }
+    .article-pdf .icon { font-size: 28px; }
+    .article-pdf .txt { flex: 1; }
+    .article-pdf .txt strong { display: block; font-size: 16px; font-weight: 700; }
+    .article-pdf .txt small { display: block; font-size: 12.5px; opacity: 0.8; margin-top: 2px; }
+    .article-pdf a.download {
+        padding: 12px 22px;
+        background: var(--gold);
+        color: #1b2128;
+        border-radius: 3px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        transition: background 0.2s;
+    }
+    .article-pdf a.download:hover { background: #d0a44a; }
+
+    .article-refs pre {
+        white-space: pre-wrap; word-break: break-word;
+        background: var(--panel-warm);
+        border: 1px solid var(--border);
+        padding: 18px 20px;
+        border-radius: 3px;
+        font-family: "Georgia", "Times New Roman", serif;
+        font-size: 13.5px;
+        line-height: 1.7;
+        color: var(--text);
+    }
+
+    .site-footer { margin-top: 26px; padding: 18px 42px 4px; }
+    .foot-credit { font-size: 12px; letter-spacing: 0.04em; color: var(--muted); opacity: 0.75; margin: 0; }
+    .foot-credit a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+
+    @media (max-width: 720px) {
+        .content, .site-footer { padding-left: 22px; padding-right: 22px; }
+        .top-nav a { padding: 0 18px; font-size: 12px; min-height: 54px; }
+        .masthead-strip { padding: 14px 22px; }
+        .article-pdf { flex-direction: column; align-items: flex-start; }
+    }
+`;
+
 function renderHtml(article) {
     const authors = Array.isArray(article.authors) ? article.authors : [];
     const authorNames = authors.map((a) => a.name).filter(Boolean);
@@ -53,24 +250,17 @@ function renderHtml(article) {
         article.last_page ? `    <meta name="citation_lastpage" content="${article.last_page}">` : ""
     ].filter(Boolean).join("\n");
     const issueMeta = article.journal_issue ? `    <meta name="citation_issue" content="${article.journal_issue}">` : "";
+    const volumeMeta = article.journal_year ? `    <meta name="citation_volume" content="${article.journal_year}">` : "";
     const keywordsMeta = Array.isArray(article.keywords) && article.keywords.length
         ? `    <meta name="citation_keywords" content="${esc(article.keywords.join("; "))}">`
         : "";
     const pdfMeta = pdfHref ? `    <meta name="citation_pdf_url" content="${esc(pdfHref)}">` : "";
 
-    const abstractHtml = article.abstract
-        ? `<section class="article-abstract"><h2>Annotatsiya</h2><p>${esc(article.abstract)}</p></section>`
-        : "";
-    const keywordsHtml = Array.isArray(article.keywords) && article.keywords.length
-        ? `<section class="article-keywords"><h2>Kalit so'zlar</h2><p>${esc(article.keywords.join(", "))}</p></section>`
-        : "";
-    const refsHtml = article.references_list
-        ? `<section class="article-refs"><h2>Foydalanilgan adabiyotlar</h2><pre>${esc(article.references_list)}</pre></section>`
-        : "";
-    const doiHtml = article.doi ? `<p><strong>DOI:</strong> <a href="https://doi.org/${esc(article.doi)}">${esc(article.doi)}</a></p>` : "";
-    const pdfHtml = pdfHref
-        ? `<p class="article-pdf-link"><a href="${esc(pdfHref)}" target="_blank" rel="noopener">📄 To'liq PDF matn</a></p>`
-        : "";
+    const metaStrip = [
+        article.journal_year && `${article.journal_year}`,
+        article.journal_issue && `${article.journal_issue}-son`,
+        article.first_page && `${article.first_page}${article.last_page ? "–" + article.last_page : ""}-bet`
+    ].filter(Boolean).join(" · ");
 
     const authorsBlock = authors.length
         ? `<section class="article-authors">${authors.map((a) => `
@@ -81,6 +271,30 @@ function renderHtml(article) {
                 ${a.email ? `<a href="mailto:${esc(a.email)}">${esc(a.email)}</a>` : ""}
             </div>`).join("")}</section>`
         : "";
+
+    const abstractHtml = article.abstract
+        ? `<section class="article-abstract"><h2 class="section-title">Annotatsiya</h2><p>${esc(article.abstract)}</p></section>`
+        : "";
+    const keywordsHtml = Array.isArray(article.keywords) && article.keywords.length
+        ? `<section class="article-keywords"><h2 class="section-title">Kalit so'zlar</h2><p>${esc(article.keywords.join(", "))}</p></section>`
+        : "";
+    const refsHtml = article.references_list
+        ? `<section class="article-refs"><h2 class="section-title">Foydalanilgan adabiyotlar</h2><pre>${esc(article.references_list)}</pre></section>`
+        : "";
+
+    const doiHtml = article.doi
+        ? `<p class="article-doi"><strong>DOI:</strong> <a href="https://doi.org/${esc(article.doi)}" target="_blank" rel="noopener">${esc(article.doi)}</a></p>`
+        : "";
+
+    const pdfBlock = pdfHref ? `
+        <div class="article-pdf">
+            <span class="icon" aria-hidden="true">📄</span>
+            <div class="txt">
+                <strong>To'liq matn PDF formatda</strong>
+                <small>Yangi oynada ochiladi</small>
+            </div>
+            <a class="download" href="${esc(pdfHref)}" target="_blank" rel="noopener">PDF ochish</a>
+        </div>` : "";
 
     return `<!DOCTYPE html>
 <html lang="${esc(article.language || "uz")}">
@@ -106,6 +320,7 @@ ${affMeta}
     <meta name="citation_abstract_html_url" content="${esc(canonical)}">
 ${pdfMeta}
 ${doiMeta}
+${volumeMeta}
 ${issueMeta}
 ${pagesMeta}
 ${keywordsMeta}
@@ -123,46 +338,58 @@ ${keywordsMeta}
     <meta property="og:url" content="${esc(canonical)}">
 
     <link rel="icon" href="/assets/logo.png">
-    <style>
-        :root { color-scheme: light; }
-        body { font-family: "Inter", "Segoe UI", system-ui, sans-serif; max-width: 780px; margin: 0 auto; padding: 40px 24px 80px; color: #12131a; line-height: 1.6; background: #fafbfd; }
-        .breadcrumb { font-size: 13px; color: #6a6f80; margin-bottom: 24px; }
-        .breadcrumb a { color: #143a86; text-decoration: none; }
-        h1 { font-size: 26px; line-height: 1.25; margin: 0 0 16px; }
-        .article-meta { font-size: 14px; color: #4a4e5a; margin: 0 0 24px; padding: 12px 16px; background: #eef3ff; border-radius: 8px; }
-        h2 { font-size: 18px; margin: 32px 0 12px; color: #143a86; }
-        .article-authors { display: grid; gap: 12px; margin: 20px 0; padding: 16px; background: #fff; border: 1px solid #e4e6ee; border-radius: 10px; }
-        .author { display: grid; gap: 4px; font-size: 14px; }
-        .author strong { font-size: 15px; }
-        .author a { color: #143a86; text-decoration: none; }
-        .article-pdf-link a { display: inline-block; padding: 10px 18px; background: #143a86; color: #fff; text-decoration: none; border-radius: 8px; font-weight: 600; }
-        .article-pdf-link a:hover { background: #0f2e6c; }
-        pre { white-space: pre-wrap; word-break: break-word; background: #fff; border: 1px solid #e4e6ee; padding: 16px; border-radius: 8px; font-family: "Georgia", serif; font-size: 13px; line-height: 1.6; }
-    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>${STYLES}</style>
 </head>
 <body>
-    <nav class="breadcrumb">
-        <a href="/">${esc(JOURNAL_TITLE_SHORT)}</a> ›
-        <a href="/#maqolalar">Maqolalar</a> ›
-        <span>${esc(article.title)}</span>
-    </nav>
+    <div class="site-shell">
+        <header class="masthead-strip">
+            <a href="/" class="brand">
+                <img src="/assets/logo.png" alt="">
+                <span>
+                    <span class="brand-title">${esc(JOURNAL_TITLE_SHORT)}</span>
+                    <span class="brand-sub">ISSN ${ISSN} · OAK ro'yxatida</span>
+                </span>
+            </a>
+        </header>
 
-    <article>
-        <h1>${esc(article.title)}</h1>
+        <nav class="top-nav">
+            <a href="/">Jurnal haqida</a>
+            <a href="/#talablar">Talablar</a>
+            <a href="/maqola" class="is-current">Maqolalar</a>
+            <a href="/#arxiv">Arxiv</a>
+            <a href="/#redkollegiya">Tahrir hay'ati</a>
+        </nav>
 
-        <p class="article-meta">
-            ${article.journal_year ? `${article.journal_year}` : ""}${article.journal_issue ? ` · ${article.journal_issue}-son` : ""}
-            ${article.first_page ? ` · ${article.first_page}${article.last_page ? "–" + article.last_page : ""}-bet` : ""}
-            ${article.rubric ? ` · ${esc(article.rubric)}` : ""}
-        </p>
+        <main class="content">
+            <nav class="breadcrumb" aria-label="Breadcrumb">
+                <a href="/">Asosiy sahifa</a>
+                <span>/</span>
+                <a href="/maqola">Maqolalar</a>
+                <span>/</span>
+                <strong>Maqola</strong>
+            </nav>
 
-        ${authorsBlock}
-        ${doiHtml}
-        ${abstractHtml}
-        ${keywordsHtml}
-        ${pdfHtml}
-        ${refsHtml}
-    </article>
+            <header class="article-header">
+                ${metaStrip ? `<span class="article-meta-strip">${esc(metaStrip)}</span>` : ""}
+                <h1 class="article-title">${esc(article.title)}</h1>
+                ${article.rubric ? `<span class="article-rubric">${esc(article.rubric)}</span>` : ""}
+            </header>
+
+            ${authorsBlock}
+            ${doiHtml}
+            ${abstractHtml}
+            ${keywordsHtml}
+            ${pdfBlock}
+            ${refsHtml}
+        </main>
+
+        <footer class="site-footer">
+            <p class="foot-credit">Designed &amp; developed by <a href="https://teiior.uz" target="_blank" rel="noopener noreferrer">teiior</a></p>
+        </footer>
+    </div>
 </body>
 </html>`;
 }
@@ -188,7 +415,7 @@ export default async function handler(req, res) {
     }
     if (!data) {
         res.status(404).setHeader("Content-Type", "text/html; charset=utf-8").send(
-            `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Maqola topilmadi — ${JOURNAL_TITLE_SHORT}</title></head><body style="font-family:system-ui;max-width:600px;margin:60px auto;padding:24px;text-align:center;"><h1>Maqola topilmadi</h1><p><a href="/">Bosh sahifaga qaytish</a></p></body></html>`
+            `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Maqola topilmadi — ${JOURNAL_TITLE_SHORT}</title></head><body style="font-family:Montserrat,system-ui;max-width:600px;margin:60px auto;padding:24px;text-align:center;background:#8ec0c6;"><div style="background:#fff;padding:40px;border-radius:4px;"><h1 style="color:#9f2d31;">Maqola topilmadi</h1><p><a href="/maqola" style="color:#9f2d31;">Barcha maqolalar</a> · <a href="/" style="color:#9f2d31;">Bosh sahifa</a></p></div></body></html>`
         );
         return;
     }
