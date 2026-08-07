@@ -23,129 +23,122 @@ function esc(s) {
 const STYLES = `
     :root {
         color-scheme: light;
-        --panel: #ffffff;
-        --panel-warm: #fbf7ee;
-        --panel-soft: #fdfaf3;
-        --muted: #5d6c78;
-        --text: #2a343e;
-        --ink: #171b21;
-        --border: #e5dfd3;
-        --border-soft: #efebde;
-        --maroon: #9f2d31;
-        --maroon-dark: #7f2024;
-        --maroon-soft: #f6ebec;
-        --gold: #b9923f;
-        --gold-dark: #8e6f2c;
-        --green: #7dad2f;
+        --paper: #fdfaf3;
+        --paper-2: #faf5ea;
+        --ink: #1a1815;
+        --ink-2: #2b2822;
+        --muted: #6b6558;
+        --hair: #d9d3c3;
+        --hair-2: #ede7d5;
+        --maroon: #8a2226;
+        --maroon-dark: #6b1a1e;
+        --gold: #a8842f;
+        --serif: "Source Serif 4", "Source Serif Pro", "Georgia", serif;
+        --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-        background: var(--panel);
-        color: var(--text);
-        font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
-        line-height: 1.6;
-        font-size: 16px;
+        background: var(--paper);
+        color: var(--ink-2);
+        font-family: var(--serif);
+        font-size: 17px;
+        line-height: 1.7;
         -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
     }
 
-    /* ==== Chrome ==== */
-    .masthead-strip {
-        background: var(--panel-warm);
-        border-bottom: 1px solid var(--border);
-        padding: 1.125rem 2rem;
+    /* Masthead */
+    .masthead {
+        background: var(--paper);
+        border-bottom: 1px solid var(--hair);
+        padding: 1.25rem 2rem 1rem;
     }
     .masthead-inner {
-        max-width: 1400px; margin: 0 auto;
+        max-width: 1180px; margin: 0 auto;
         display: flex; align-items: center; justify-content: space-between;
         gap: 1rem; flex-wrap: wrap;
     }
-    .masthead-strip a.brand { display: flex; align-items: center; gap: 0.875rem; text-decoration: none; color: inherit; }
-    .masthead-strip img { width: 48px; height: 48px; object-fit: contain; }
-    .brand-title { font-weight: 800; font-size: 1rem; color: var(--ink); letter-spacing: -0.005em; display: block; line-height: 1.2; }
-    .brand-sub { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); display: block; margin-top: 3px; }
+    .masthead a.brand { display: flex; align-items: center; gap: 0.875rem; text-decoration: none; color: inherit; }
+    .masthead img { width: 42px; height: 42px; opacity: 0.9; }
+    .brand-title { font-family: var(--serif); font-weight: 600; font-size: 1.0625rem; color: var(--ink); display: block; line-height: 1.2; }
+    .brand-sub { font-family: var(--sans); font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); display: block; margin-top: 4px; max-width: 46ch; }
+    .masthead-meta { font-family: var(--sans); font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--muted); }
 
+    /* Nav */
     .top-nav {
-        background: var(--maroon);
-        border-bottom: 3px solid var(--gold);
+        background: var(--paper);
+        border-bottom: 1px solid var(--hair);
         position: sticky; top: 0; z-index: 10;
     }
-    .top-nav-inner { max-width: 1400px; margin: 0 auto; display: flex; flex-wrap: wrap; }
+    .top-nav-inner { max-width: 1180px; margin: 0 auto; display: flex; flex-wrap: wrap; justify-content: center; }
     .top-nav a {
-        min-height: 58px;
         display: inline-flex; align-items: center; justify-content: center;
-        padding: 0 1.75rem;
-        color: rgba(255, 255, 255, 0.92);
-        font-size: 0.8125rem; font-weight: 700;
-        letter-spacing: 0.09em; text-transform: uppercase;
+        padding: 1rem 1.5rem;
+        color: var(--ink-2);
+        font-family: var(--sans);
+        font-size: 0.75rem; font-weight: 600;
+        letter-spacing: 0.14em; text-transform: uppercase;
         text-decoration: none;
-        transition: background 0.2s;
+        transition: color 0.2s;
         position: relative;
     }
-    .top-nav a:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
-    .top-nav a.is-current { color: #fff; background: rgba(0, 0, 0, 0.12); }
+    .top-nav a:hover { color: var(--maroon); }
+    .top-nav a.is-current { color: var(--maroon); }
     .top-nav a.is-current::after {
-        content: ""; position: absolute; left: 0; right: 0; bottom: -3px;
-        height: 3px; background: var(--gold);
+        content: ""; position: absolute; left: 1.5rem; right: 1.5rem; bottom: -1px;
+        height: 2px; background: var(--maroon);
     }
 
-    .notice-bar {
-        background: var(--green); color: #fff;
-        padding: 0.75rem 2rem;
-        font-size: 0.8125rem; font-weight: 500;
+    /* Hero */
+    .page-head {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 4rem 1.5rem 2.5rem;
     }
-    .notice-inner { max-width: 1400px; margin: 0 auto; }
-
-    /* ==== Hero ==== */
-    .page-hero {
-        padding: 4rem 2rem 2.5rem;
-        background: linear-gradient(180deg, var(--panel-warm) 0%, var(--panel) 100%);
-        border-bottom: 1px solid var(--border-soft);
-    }
-    .hero-inner { max-width: 1200px; margin: 0 auto; }
     .breadcrumb {
-        display: flex; flex-wrap: wrap; gap: 0.5rem;
-        font-size: 0.75rem; font-weight: 700;
-        letter-spacing: 0.09em; text-transform: uppercase;
-        color: var(--muted); margin-bottom: 1.25rem;
+        display: flex; flex-wrap: wrap; gap: 0.4375rem;
+        font-family: var(--sans);
+        font-size: 0.6875rem; font-weight: 600;
+        letter-spacing: 0.13em; text-transform: uppercase;
+        color: var(--muted); margin-bottom: 2rem;
     }
     .breadcrumb a { color: var(--muted); text-decoration: none; }
     .breadcrumb a:hover { color: var(--maroon); }
-    .breadcrumb strong { color: var(--maroon); }
-    .breadcrumb span.sep { opacity: 0.4; }
+    .breadcrumb strong { color: var(--ink-2); font-weight: 700; }
+    .breadcrumb span.sep { opacity: 0.45; }
 
-    .hero-eyebrow {
+    .page-eyebrow {
+        font-family: var(--sans);
         font-size: 0.75rem;
-        text-transform: uppercase;
-        letter-spacing: 0.12em;
-        color: var(--maroon);
-        font-weight: 800;
-        margin-bottom: 0.75rem;
+        text-transform: uppercase; letter-spacing: 0.16em;
+        color: var(--maroon); font-weight: 600;
+        margin-bottom: 1rem;
     }
-    h1.hero-title {
-        font-family: "Montserrat", system-ui, sans-serif;
-        font-size: clamp(2rem, 4.5vw, 3.5rem);
-        line-height: 1.05;
-        letter-spacing: -0.025em;
+    h1.page-title {
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: clamp(2rem, 4vw, 3rem);
+        line-height: 1.1;
+        letter-spacing: -0.015em;
         color: var(--ink);
-        font-weight: 800;
-        margin: 0 0 1rem;
+        margin: 0 0 0.75rem;
     }
-    .hero-lead {
+    .page-lead {
+        font-family: var(--serif);
+        font-size: 1.125rem; line-height: 1.65;
         color: var(--muted);
-        font-size: 1.0625rem;
-        line-height: 1.7;
         max-width: 60ch;
         margin: 0;
     }
 
-    /* ==== Listing ==== */
-    .listing-section {
-        padding: 2.5rem 2rem 4rem;
-        background: var(--panel);
+    /* Section wrapper */
+    .listing-wrap {
+        max-width: 960px;
+        margin: 0 auto;
+        padding: 1rem 1.5rem 5rem;
     }
-    .listing-inner { max-width: 1200px; margin: 0 auto; }
 
     /* Search */
     .search-bar {
@@ -153,164 +146,137 @@ const STYLES = `
         grid-template-columns: 1fr minmax(220px, 280px) auto;
         align-items: center;
         gap: 0.875rem;
-        margin: 0 0 2rem;
-        padding: 1rem 1.25rem;
-        background: var(--panel-warm);
-        border: 1px solid var(--border);
-        border-radius: 8px;
+        margin: 0 0 2.5rem;
+        padding: 1rem 0;
+        border-top: 1px solid var(--hair);
+        border-bottom: 1px solid var(--hair);
     }
     @media (max-width: 720px) {
         .search-bar { grid-template-columns: 1fr; }
         .search-bar .search-count { text-align: left; }
     }
     .search-bar input, .search-bar select {
-        padding: 0.6875rem 0.875rem;
-        border: 1px solid var(--border);
-        border-radius: 4px;
-        font: inherit; font-size: 0.9375rem;
-        background: #fff; color: var(--text);
+        padding: 0.625rem 0.875rem;
+        border: 1px solid var(--hair);
+        border-radius: 2px;
+        font-family: var(--sans);
+        font-size: 0.875rem;
+        background: #fff; color: var(--ink-2);
         transition: border-color 0.15s, box-shadow 0.15s;
         width: 100%;
     }
     .search-bar select {
         appearance: none;
-        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%235d6c78' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+        background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'><path d='M1 1l5 5 5-5' stroke='%236b6558' stroke-width='1.5' fill='none' stroke-linecap='round' stroke-linejoin='round'/></svg>");
         background-repeat: no-repeat;
         background-position: right 12px center;
         padding-right: 34px;
         cursor: pointer;
     }
     .search-bar input:focus, .search-bar select:focus {
-        outline: none;
-        border-color: var(--maroon);
-        box-shadow: 0 0 0 3px rgba(159, 45, 49, 0.14);
+        outline: none; border-color: var(--maroon);
+        box-shadow: 0 0 0 3px rgba(138, 34, 38, 0.1);
     }
     .search-bar .search-count {
-        font-size: 0.8125rem; color: var(--muted); font-weight: 600;
+        font-family: var(--sans);
+        font-size: 0.75rem; color: var(--muted);
+        font-weight: 500; letter-spacing: 0.04em;
         min-width: 120px; text-align: right; padding: 0 0.375rem;
     }
 
-    /* Cards grid */
+    /* Editorial list — like TOC in an academic journal */
     .articles-list {
-        display: grid;
-        gap: 1.25rem;
-        grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+        display: flex; flex-direction: column;
     }
     .listing-item {
-        padding: 1.75rem;
-        border: 1px solid var(--border);
-        background: #fff;
-        border-radius: 8px;
-        display: flex; flex-direction: column;
-        gap: 0.75rem;
-        transition: transform 0.2s, box-shadow 0.2s, border-color 0.2s;
-        position: relative;
-        overflow: hidden;
+        padding: 2rem 0;
+        border-bottom: 1px solid var(--hair);
+        display: grid;
+        grid-template-columns: 5rem 1fr;
+        gap: 1.5rem;
     }
-    .listing-item::before {
-        content: ""; position: absolute; left: 0; top: 0; bottom: 0;
-        width: 3px; background: var(--gold); opacity: 0.6;
-        transition: opacity 0.2s, background 0.2s;
-    }
-    .listing-item:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 12px 32px rgba(21, 36, 46, 0.09);
-        border-color: transparent;
-    }
-    .listing-item:hover::before { background: var(--maroon); opacity: 1; }
-    .listing-item .issue-badge {
-        display: inline-block;
+    .listing-item:first-child { padding-top: 1rem; }
+    @media (max-width: 640px) { .listing-item { grid-template-columns: 1fr; gap: 0.5rem; } }
+
+    .listing-item .item-meta {
+        font-family: var(--sans);
         font-size: 0.6875rem;
-        text-transform: uppercase;
-        letter-spacing: 0.11em;
-        color: var(--maroon);
-        font-weight: 800;
-        align-self: flex-start;
+        text-transform: uppercase; letter-spacing: 0.13em;
+        color: var(--muted);
+        line-height: 1.5;
+        padding-top: 0.375rem;
     }
+    .listing-item .item-meta .year { display: block; font-weight: 700; color: var(--ink-2); font-size: 0.8125rem; letter-spacing: 0.06em; }
+    .listing-item .item-meta .issue { display: block; margin-top: 2px; }
+    .listing-item .item-meta .pages { display: block; margin-top: 2px; color: var(--gold); font-weight: 600; }
+
     .listing-item h2 {
-        font-size: 1.1875rem;
-        line-height: 1.35;
-        margin: 0;
-        font-weight: 700;
-        letter-spacing: -0.01em;
+        font-family: var(--serif);
+        font-size: 1.4375rem;
+        line-height: 1.28;
+        margin: 0 0 0.5rem;
+        font-weight: 600;
+        letter-spacing: -0.005em;
     }
-    .listing-item h2 a { color: var(--ink); text-decoration: none; }
+    .listing-item h2 a { color: var(--ink); text-decoration: none; transition: color 0.15s; }
     .listing-item h2 a:hover { color: var(--maroon); }
+
     .listing-item .authors {
+        font-family: var(--serif);
         font-style: italic;
-        color: var(--text);
-        margin: 0;
+        color: var(--muted);
+        margin: 0 0 0.75rem;
         font-size: 0.9375rem;
     }
     .listing-item .abstract {
-        color: var(--muted);
-        font-size: 0.9375rem;
+        font-family: var(--serif);
+        color: var(--ink-2);
+        font-size: 1rem;
         margin: 0;
-        line-height: 1.65;
-        flex: 1;
+        line-height: 1.7;
+        text-align: justify;
+        hyphens: auto;
     }
-    .listing-item .read-more {
-        margin-top: 0.375rem;
-        color: var(--maroon);
-        font-size: 0.8125rem;
-        font-weight: 700;
-        text-transform: uppercase;
-        letter-spacing: 0.08em;
-        text-decoration: none;
-        display: inline-flex; align-items: center; gap: 0.375rem;
-    }
-    .listing-item .read-more::after { content: "→"; transition: transform 0.2s; }
-    .listing-item:hover .read-more::after { transform: translateX(4px); }
 
     /* Empty states */
-    .empty {
-        padding: 4rem 1.5rem;
+    .empty, .search-no-results {
+        padding: 3rem 0;
         text-align: center;
         color: var(--muted);
-        background: var(--panel-warm);
-        border: 1px dashed var(--border);
-        border-radius: 8px;
+        font-family: var(--serif);
     }
-    .empty h3 { margin: 0 0 0.5rem; color: var(--ink); font-weight: 700; font-size: 1.125rem; }
-    .search-no-results {
-        padding: 2.5rem 1.5rem;
-        text-align: center;
-        color: var(--muted);
-        background: var(--panel-warm);
-        border: 1px dashed var(--border);
-        border-radius: 8px;
-        display: none;
-    }
-    .search-no-results.is-visible { display: block; }
-    .search-no-results strong {
+    .empty h3, .search-no-results strong {
         display: block;
-        color: var(--maroon);
-        font-size: 1.0625rem;
-        margin-bottom: 0.375rem;
+        font-family: var(--serif); font-weight: 600;
+        color: var(--ink); margin-bottom: 0.5rem;
+        font-size: 1.125rem;
     }
+    .search-no-results { display: none; }
+    .search-no-results.is-visible { display: block; }
+    .search-no-results p { font-family: var(--sans); font-size: 0.875rem; margin: 0; }
 
     /* Footer */
     .site-footer {
-        background: var(--panel-warm);
-        border-top: 1px solid var(--border);
-        padding: 1.75rem 2rem;
+        border-top: 1px solid var(--hair);
+        padding: 2.25rem 2rem;
     }
     .footer-inner {
-        max-width: 1400px; margin: 0 auto;
+        max-width: 1180px; margin: 0 auto;
         display: flex; justify-content: space-between; align-items: center;
         flex-wrap: wrap; gap: 1rem;
+        font-family: var(--sans);
+        font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em;
     }
-    .footer-inner .foot-brand { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
-    .foot-credit { font-size: 0.75rem; color: var(--muted); margin: 0; }
-    .foot-credit a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
-    .foot-credit a:hover { color: var(--maroon); }
+    .footer-inner a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+    .footer-inner a:hover { color: var(--maroon); }
 
     @media (max-width: 720px) {
-        .page-hero { padding: 2.5rem 1.25rem 2rem; }
-        .listing-section { padding: 2rem 1.25rem 3rem; }
-        .articles-list { grid-template-columns: 1fr; }
-        .top-nav a { padding: 0 1rem; font-size: 0.75rem; min-height: 52px; }
-        .masthead-strip, .notice-bar { padding-left: 1.25rem; padding-right: 1.25rem; }
+        body { font-size: 16px; }
+        .page-head { padding: 2.5rem 1.25rem 2rem; }
+        .listing-wrap { padding: 1rem 1.25rem 3rem; }
+        .top-nav a { padding: 0.875rem 0.875rem; font-size: 0.6875rem; letter-spacing: 0.1em; }
+        .top-nav-inner { justify-content: flex-start; overflow-x: auto; }
+        .masthead { padding: 1rem 1.25rem; }
         .site-footer { padding: 1.5rem 1.25rem; }
     }
 `;
@@ -333,15 +299,20 @@ export default async function handler(req, res) {
     const rows = articles.map((a) => {
         const authorList = Array.isArray(a.authors) ? a.authors.map((au) => au.name).filter(Boolean) : [];
         const authors = authorList.join(", ");
-        const issue = [a.journal_year, a.journal_issue && `${a.journal_issue}-son`].filter(Boolean).join(" · ");
-        const pages = a.first_page ? `${a.first_page}${a.last_page ? "–" + a.last_page : ""}-bet` : "";
-        const meta = [issue, pages].filter(Boolean).join(" · ");
+        const year = a.journal_year ? `${a.journal_year}` : "";
+        const issue = a.journal_issue ? `${a.journal_issue}-son` : "";
+        const pages = a.first_page ? `${a.first_page}${a.last_page ? "–" + a.last_page : ""} bet` : "";
         return `<article class="listing-item" data-authors="${esc(authorList.join("|"))}">
-            ${meta ? `<span class="issue-badge">${esc(meta)}</span>` : ""}
-            <h2><a href="/maqola/${esc(encodeURIComponent(a.slug))}">${esc(a.title)}</a></h2>
-            ${authors ? `<p class="authors">${esc(authors)}</p>` : ""}
-            ${a.abstract ? `<p class="abstract">${esc(a.abstract.slice(0, 240))}${a.abstract.length > 240 ? "…" : ""}</p>` : ""}
-            <a class="read-more" href="/maqola/${esc(encodeURIComponent(a.slug))}">O'qish</a>
+            <div class="item-meta">
+                ${year ? `<span class="year">${esc(year)}</span>` : ""}
+                ${issue ? `<span class="issue">${esc(issue)}</span>` : ""}
+                ${pages ? `<span class="pages">${esc(pages)}</span>` : ""}
+            </div>
+            <div>
+                <h2><a href="/maqola/${esc(encodeURIComponent(a.slug))}">${esc(a.title)}</a></h2>
+                ${authors ? `<p class="authors">${esc(authors)}</p>` : ""}
+                ${a.abstract ? `<p class="abstract">${esc(a.abstract.slice(0, 320))}${a.abstract.length > 320 ? "…" : ""}</p>` : ""}
+            </div>
         </article>`;
     }).join("\n");
 
@@ -362,19 +333,20 @@ export default async function handler(req, res) {
     <link rel="icon" href="/assets/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>${STYLES}</style>
 </head>
 <body>
-    <header class="masthead-strip">
+    <header class="masthead">
         <div class="masthead-inner">
             <a href="/" class="brand">
                 <img src="/assets/logo.png" alt="">
                 <span>
-                    <span class="brand-title">${esc(JOURNAL_TITLE_SHORT)}</span>
-                    <span class="brand-sub">ISSN ${ISSN} · OAK ro'yxatida</span>
+                    <span class="brand-title">${esc(JOURNAL_TITLE)}</span>
+                    <span class="brand-sub">Ilmiy-nazariy, amaliy-uslubiy va ma'naviy-ma'rifiy jurnal</span>
                 </span>
             </a>
+            <span class="masthead-meta">ISSN ${ISSN}</span>
         </div>
     </header>
 
@@ -388,77 +360,69 @@ export default async function handler(req, res) {
         </div>
     </nav>
 
-    <div class="notice-bar">
-        <div class="notice-inner">Jurnal O'zbekiston Respublikasi OAK Rayosatining 2017-yil 29-noyabrdagi 245/6-sonli qarori bilan tavsiya etilgan ilmiy nashrlar ro'yxatiga kiritilgan.</div>
-    </div>
-
-    <section class="page-hero">
-        <div class="hero-inner">
-            <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="/">Asosiy sahifa</a>
-                <span class="sep">/</span>
-                <strong>Maqolalar</strong>
-            </nav>
-            <div class="hero-eyebrow">Ilmiy nashr · ${articles.length} maqola</div>
-            <h1 class="hero-title">Maqolalar</h1>
-            <p class="hero-lead">${esc(JOURNAL_TITLE)} — chop etilgan barcha ilmiy maqolalar. Har bir maqola alohida sahifada, to'liq metama'lumot va PDF matn bilan.</p>
-        </div>
+    <section class="page-head">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Asosiy sahifa</a>
+            <span class="sep">/</span>
+            <strong>Maqolalar</strong>
+        </nav>
+        <div class="page-eyebrow">Ilmiy nashr · ${articles.length} maqola</div>
+        <h1 class="page-title">Maqolalar</h1>
+        <p class="page-lead">Jurnalning barcha nashr etilgan ilmiy maqolalari. Har bir maqolada Google Scholar mos meta-ma'lumot va to'liq PDF matn.</p>
     </section>
 
-    <section class="listing-section">
-        <div class="listing-inner">
-            ${articles.length ? `
-            <div class="search-bar" role="search">
-                <input type="search" id="live-search" placeholder="Sarlavha, muallif yoki matn bo'yicha qidiring…" autocomplete="off" aria-label="Maqolalarni qidirish">
-                <select id="author-filter" aria-label="Muallif bo'yicha filtrlash">
-                    <option value="">Barcha mualliflar</option>
-                    ${authorOptions}
-                </select>
-                <span class="search-count" id="search-count" aria-live="polite"></span>
-            </div>
-            <div class="articles-list" id="articles-list">${rows}</div>
-            <div class="search-no-results" id="search-no-results" role="status">
-                <strong>Hech narsa topilmadi</strong>
-                <p style="margin: 0;">Boshqa so'z yoki muallifni tanlab ko'ring.</p>
-            </div>
-            <script>
-                (function () {
-                    var input = document.getElementById("live-search");
-                    var authorSel = document.getElementById("author-filter");
-                    var count = document.getElementById("search-count");
-                    var empty = document.getElementById("search-no-results");
-                    var items = Array.prototype.slice.call(document.querySelectorAll(".listing-item"));
-                    var total = items.length;
-                    function norm(s) { return (s || "").toLowerCase().trim(); }
-                    function apply() {
-                        var q = norm(input.value);
-                        var a = authorSel.value;
-                        var visible = 0;
-                        items.forEach(function (item) {
-                            var text = norm(item.textContent);
-                            var authors = (item.getAttribute("data-authors") || "").split("|");
-                            var matchesText = !q || text.indexOf(q) !== -1;
-                            var matchesAuthor = !a || authors.indexOf(a) !== -1;
-                            var ok = matchesText && matchesAuthor;
-                            item.style.display = ok ? "" : "none";
-                            if (ok) visible++;
-                        });
-                        count.textContent = (q || a) ? visible + " / " + total + " topildi" : total + " ta maqola";
-                        empty.classList.toggle("is-visible", visible === 0 && (q || a));
-                    }
-                    input.addEventListener("input", apply);
-                    authorSel.addEventListener("change", apply);
-                    apply();
-                })();
-            </script>
-            ` : `<div class="empty"><h3>Maqolalar hali qo'shilmagan</h3><p>Yangi sonlar tez orada shu yerda paydo bo'ladi.</p></div>`}
+    <section class="listing-wrap">
+        ${articles.length ? `
+        <div class="search-bar" role="search">
+            <input type="search" id="live-search" placeholder="Sarlavha, muallif yoki matn bo'yicha qidiring…" autocomplete="off" aria-label="Maqolalarni qidirish">
+            <select id="author-filter" aria-label="Muallif bo'yicha filtrlash">
+                <option value="">Barcha mualliflar</option>
+                ${authorOptions}
+            </select>
+            <span class="search-count" id="search-count" aria-live="polite"></span>
         </div>
+        <div class="articles-list" id="articles-list">${rows}</div>
+        <div class="search-no-results" id="search-no-results" role="status">
+            <strong>Hech narsa topilmadi</strong>
+            <p>Boshqa so'z yoki muallifni tanlab ko'ring.</p>
+        </div>
+        <script>
+            (function () {
+                var input = document.getElementById("live-search");
+                var authorSel = document.getElementById("author-filter");
+                var count = document.getElementById("search-count");
+                var empty = document.getElementById("search-no-results");
+                var items = Array.prototype.slice.call(document.querySelectorAll(".listing-item"));
+                var total = items.length;
+                function norm(s) { return (s || "").toLowerCase().trim(); }
+                function apply() {
+                    var q = norm(input.value);
+                    var a = authorSel.value;
+                    var visible = 0;
+                    items.forEach(function (item) {
+                        var text = norm(item.textContent);
+                        var authors = (item.getAttribute("data-authors") || "").split("|");
+                        var matchesText = !q || text.indexOf(q) !== -1;
+                        var matchesAuthor = !a || authors.indexOf(a) !== -1;
+                        var ok = matchesText && matchesAuthor;
+                        item.style.display = ok ? "" : "none";
+                        if (ok) visible++;
+                    });
+                    count.textContent = (q || a) ? visible + " / " + total + " topildi" : total + " ta maqola";
+                    empty.classList.toggle("is-visible", visible === 0 && (q || a));
+                }
+                input.addEventListener("input", apply);
+                authorSel.addEventListener("change", apply);
+                apply();
+            })();
+        </script>
+        ` : `<div class="empty"><h3>Maqolalar hali qo'shilmagan</h3><p>Yangi sonlar tez orada shu yerda paydo bo'ladi.</p></div>`}
     </section>
 
     <footer class="site-footer">
         <div class="footer-inner">
-            <span class="foot-brand">© ${esc(PUBLISHER)}</span>
-            <p class="foot-credit">Designed &amp; developed by <a href="https://teiior.uz" target="_blank" rel="noopener noreferrer">teiior</a></p>
+            <span>© ${esc(PUBLISHER)}</span>
+            <span>Designed &amp; developed by <a href="https://teiior.uz" target="_blank" rel="noopener noreferrer">teiior</a></span>
         </div>
     </footer>
 </body>

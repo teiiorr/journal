@@ -33,288 +33,317 @@ function pdfUrl(article) {
 const STYLES = `
     :root {
         color-scheme: light;
-        --panel: #ffffff;
-        --panel-warm: #fbf7ee;
-        --panel-soft: #fdfaf3;
-        --muted: #5d6c78;
-        --text: #2a343e;
-        --ink: #171b21;
-        --border: #e5dfd3;
-        --border-soft: #efebde;
-        --maroon: #9f2d31;
-        --maroon-dark: #7f2024;
-        --maroon-soft: #f6ebec;
-        --gold: #b9923f;
-        --gold-dark: #8e6f2c;
-        --green: #7dad2f;
+        --paper: #fdfaf3;
+        --paper-2: #faf5ea;
+        --ink: #1a1815;
+        --ink-2: #2b2822;
+        --muted: #6b6558;
+        --hair: #d9d3c3;
+        --hair-2: #ede7d5;
+        --maroon: #8a2226;
+        --maroon-dark: #6b1a1e;
+        --gold: #a8842f;
+        --serif: "Source Serif 4", "Source Serif Pro", "Georgia", serif;
+        --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
     }
     * { box-sizing: border-box; }
     html, body { margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
-        background: var(--panel);
-        color: var(--text);
-        font-family: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
-        line-height: 1.7;
-        font-size: 17px;
+        background: var(--paper);
+        color: var(--ink-2);
+        font-family: var(--serif);
+        font-size: 19px;
+        line-height: 1.72;
         -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        text-rendering: optimizeLegibility;
     }
 
-    /* ==== Full-width chrome ==== */
-    .masthead-strip {
-        background: var(--panel-warm);
-        border-bottom: 1px solid var(--border);
-        padding: 1.125rem 2rem;
+    /* ==== Masthead ==== */
+    .masthead {
+        background: var(--paper);
+        border-bottom: 1px solid var(--hair);
+        padding: 1.25rem 2rem 1rem;
     }
     .masthead-inner {
-        max-width: 1400px; margin: 0 auto;
+        max-width: 1180px; margin: 0 auto;
         display: flex; align-items: center; justify-content: space-between;
         gap: 1rem; flex-wrap: wrap;
     }
-    .masthead-strip a.brand { display: flex; align-items: center; gap: 0.875rem; text-decoration: none; color: inherit; }
-    .masthead-strip img { width: 48px; height: 48px; object-fit: contain; }
-    .brand-title { font-weight: 800; font-size: 1rem; color: var(--ink); letter-spacing: -0.005em; display: block; line-height: 1.2; }
-    .brand-sub { font-size: 0.75rem; text-transform: uppercase; letter-spacing: 0.08em; color: var(--muted); display: block; margin-top: 3px; }
+    .masthead a.brand { display: flex; align-items: center; gap: 0.875rem; text-decoration: none; color: inherit; }
+    .masthead img { width: 42px; height: 42px; object-fit: contain; opacity: 0.9; }
+    .brand-title {
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: 1.0625rem;
+        color: var(--ink);
+        letter-spacing: 0.005em;
+        display: block; line-height: 1.2;
+    }
+    .brand-sub {
+        font-family: var(--sans);
+        font-size: 0.6875rem;
+        text-transform: uppercase; letter-spacing: 0.14em;
+        color: var(--muted); display: block; margin-top: 4px;
+    }
+    .masthead-meta {
+        font-family: var(--sans);
+        font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.14em;
+        color: var(--muted);
+    }
 
+    /* ==== Nav ==== */
     .top-nav {
-        background: var(--maroon);
-        border-bottom: 3px solid var(--gold);
+        background: var(--paper);
+        border-bottom: 1px solid var(--hair);
         position: sticky; top: 0; z-index: 10;
     }
     .top-nav-inner {
-        max-width: 1400px; margin: 0 auto;
+        max-width: 1180px; margin: 0 auto;
         display: flex; flex-wrap: wrap;
+        justify-content: center;
     }
     .top-nav a {
-        min-height: 58px;
         display: inline-flex; align-items: center; justify-content: center;
-        padding: 0 1.75rem;
-        color: rgba(255, 255, 255, 0.92);
-        font-size: 0.8125rem; font-weight: 700;
-        letter-spacing: 0.09em; text-transform: uppercase;
+        padding: 1rem 1.5rem;
+        color: var(--ink-2);
+        font-family: var(--sans);
+        font-size: 0.75rem; font-weight: 600;
+        letter-spacing: 0.14em; text-transform: uppercase;
         text-decoration: none;
-        transition: background 0.2s;
+        transition: color 0.2s;
         position: relative;
     }
-    .top-nav a:hover { background: rgba(255, 255, 255, 0.08); color: #fff; }
-    .top-nav a.is-current { color: #fff; background: rgba(0, 0, 0, 0.12); }
+    .top-nav a:hover { color: var(--maroon); }
+    .top-nav a.is-current { color: var(--maroon); }
     .top-nav a.is-current::after {
-        content: ""; position: absolute; left: 0; right: 0; bottom: -3px;
-        height: 3px; background: var(--gold);
+        content: ""; position: absolute; left: 1.5rem; right: 1.5rem; bottom: -1px;
+        height: 2px; background: var(--maroon);
     }
 
-    /* ==== Article page ==== */
-    .article-cover {
-        padding: 4rem 2rem 3rem;
-        background: linear-gradient(180deg, var(--panel-warm) 0%, var(--panel) 100%);
-        border-bottom: 1px solid var(--border-soft);
-    }
-    .article-cover-inner {
-        max-width: 820px;
+    /* ==== Article ==== */
+    .article {
+        max-width: 720px;
         margin: 0 auto;
+        padding: 4rem 1.5rem 5rem;
     }
+
     .breadcrumb {
-        display: flex; flex-wrap: wrap; gap: 0.5rem;
-        font-size: 0.75rem; font-weight: 700;
-        letter-spacing: 0.09em; text-transform: uppercase;
-        color: var(--muted); margin-bottom: 1.5rem;
+        display: flex; flex-wrap: wrap; gap: 0.4375rem;
+        font-family: var(--sans);
+        font-size: 0.6875rem; font-weight: 600;
+        letter-spacing: 0.13em; text-transform: uppercase;
+        color: var(--muted);
+        margin-bottom: 3rem;
     }
     .breadcrumb a { color: var(--muted); text-decoration: none; transition: color 0.15s; }
     .breadcrumb a:hover { color: var(--maroon); }
-    .breadcrumb strong { color: var(--maroon); }
-    .breadcrumb span.sep { opacity: 0.4; }
+    .breadcrumb span.sep { opacity: 0.45; }
+    .breadcrumb strong { color: var(--ink-2); font-weight: 700; }
 
-    .meta-line {
-        display: flex; flex-wrap: wrap; gap: 0.75rem;
-        font-size: 0.75rem; font-weight: 800;
-        letter-spacing: 0.1em; text-transform: uppercase;
-        color: var(--maroon); margin-bottom: 1.25rem;
+    .article-eyebrow {
+        font-family: var(--sans);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--maroon);
+        font-weight: 600;
+        margin-bottom: 1.25rem;
+        display: flex; flex-wrap: wrap; gap: 0.5rem;
+        align-items: center;
     }
-    .meta-line .dot { color: var(--gold); }
+    .article-eyebrow .sep { color: var(--hair); font-weight: 400; }
 
     h1.article-title {
-        font-family: "Montserrat", system-ui, sans-serif;
-        font-size: clamp(1.75rem, 3.4vw, 2.75rem);
-        line-height: 1.15;
-        margin: 0 0 1.25rem;
+        font-family: var(--serif);
+        font-weight: 600;
+        font-size: clamp(1.875rem, 3.6vw, 2.75rem);
+        line-height: 1.18;
+        letter-spacing: -0.01em;
         color: var(--ink);
-        font-weight: 800;
-        letter-spacing: -0.02em;
-    }
-    .rubric-tag {
-        display: inline-block;
-        padding: 0.375rem 0.875rem;
-        border: 1.5px solid var(--gold);
-        color: var(--gold-dark);
-        font-size: 0.6875rem;
-        font-weight: 800;
-        text-transform: uppercase;
-        letter-spacing: 0.1em;
-        border-radius: 2px;
+        margin: 0 0 1.5rem;
     }
 
-    .article-body {
-        padding: 3rem 2rem 4rem;
-        max-width: 820px;
-        margin: 0 auto;
-    }
-
-    /* Authors */
-    .article-authors {
-        display: grid; gap: 1.125rem;
-        margin: 0 0 2.5rem;
-        padding: 1.75rem 2rem;
-        background: var(--panel-soft);
-        border-left: 4px solid var(--gold);
-        border-radius: 4px;
-    }
-    .author { display: grid; gap: 0.25rem; }
-    .author strong {
+    .byline {
+        font-family: var(--serif);
         font-size: 1.0625rem;
-        color: var(--ink);
-        font-weight: 700;
-        letter-spacing: -0.005em;
+        line-height: 1.65;
+        color: var(--ink-2);
+        margin: 0 0 1.25rem;
+        padding-bottom: 1.75rem;
+        border-bottom: 1px solid var(--hair);
     }
-    .author span {
+    .byline .byline-author {
+        font-weight: 600;
+        color: var(--ink);
+    }
+    .byline .byline-aff {
         color: var(--muted);
         font-style: italic;
-        font-size: 0.9375rem;
     }
-    .author a {
-        color: var(--maroon);
-        text-decoration: none;
-        font-size: 0.875rem;
-        font-weight: 500;
-        display: inline-block;
-        margin-top: 0.125rem;
+    .byline .byline-sep {
+        color: var(--hair);
+        margin: 0 0.5rem;
     }
-    .author a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-    h2.section-title {
-        font-size: 0.875rem;
+    .rubric-line {
+        font-family: var(--sans);
+        font-size: 0.6875rem;
         text-transform: uppercase;
-        letter-spacing: 0.12em;
-        color: var(--maroon);
-        font-weight: 800;
-        margin: 2.75rem 0 1rem;
-        padding-bottom: 0.75rem;
-        border-bottom: 1px solid var(--border-soft);
+        letter-spacing: 0.16em;
+        color: var(--muted);
+        margin: -0.5rem 0 2rem;
+    }
+    .rubric-line strong { color: var(--gold); font-weight: 600; }
+
+    .lead {
+        font-family: var(--serif);
+        font-size: 1.1875rem;
+        line-height: 1.65;
+        color: var(--ink);
+        margin: 2rem 0;
+        padding: 0 0 0 1.25rem;
+        border-left: 2px solid var(--maroon);
+        font-style: italic;
     }
 
-    .article-abstract p,
-    .article-keywords p {
-        color: var(--text);
+    section.article-section {
+        margin: 2.5rem 0;
+    }
+    h2.section-heading {
+        font-family: var(--sans);
+        font-size: 0.75rem;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--muted);
+        font-weight: 700;
+        margin: 0 0 1rem;
+    }
+
+    .article-section p {
+        font-family: var(--serif);
         font-size: 1.0625rem;
-        line-height: 1.85;
+        line-height: 1.8;
+        color: var(--ink-2);
+        margin: 0 0 1rem;
+        text-align: justify;
+        hyphens: auto;
+    }
+    .article-section p:last-child { margin-bottom: 0; }
+
+    .keywords {
+        font-family: var(--serif);
+        font-style: italic;
+        color: var(--muted);
+        font-size: 1rem;
         margin: 0;
     }
-    .article-keywords p {
-        font-style: italic;
-        color: #4a5560;
-        padding: 0.875rem 1.25rem;
-        background: var(--panel-warm);
-        border-radius: 4px;
+    .keywords .kw {
+        display: inline;
+    }
+    .keywords .kw + .kw::before {
+        content: " · ";
+        color: var(--hair);
+        font-style: normal;
     }
 
-    .article-doi {
-        font-size: 0.9375rem;
-        margin: 1rem 0 0;
+    .details-line {
+        font-family: var(--sans);
+        font-size: 0.8125rem;
         color: var(--muted);
-        padding: 0.875rem 1.125rem;
-        background: var(--panel-warm);
-        border-radius: 4px;
-        border-left: 3px solid var(--maroon-soft);
+        margin: 2rem 0;
+        padding: 1rem 0;
+        border-top: 1px solid var(--hair);
+        border-bottom: 1px solid var(--hair);
+        display: grid;
+        gap: 0.5rem;
     }
-    .article-doi strong { color: var(--ink); }
-    .article-doi a { color: var(--maroon); font-weight: 600; text-decoration: none; }
-    .article-doi a:hover { text-decoration: underline; }
+    .details-line .row { display: flex; gap: 0.5rem; flex-wrap: wrap; align-items: baseline; }
+    .details-line .label {
+        font-weight: 600; text-transform: uppercase;
+        letter-spacing: 0.12em; font-size: 0.6875rem;
+        color: var(--ink-2);
+        min-width: 4rem;
+    }
+    .details-line a { color: var(--maroon); text-decoration: none; }
+    .details-line a:hover { text-decoration: underline; text-underline-offset: 3px; }
 
-    /* PDF hero */
-    .article-pdf {
-        display: flex; align-items: center; gap: 1.25rem;
+    .pdf-link {
         margin: 3rem 0;
-        padding: 1.75rem 2rem;
-        background:
-            radial-gradient(circle at 15% 20%, rgba(255,255,255,0.08), transparent 50%),
-            linear-gradient(135deg, var(--maroon) 0%, var(--maroon-dark) 100%);
-        border-radius: 8px;
+        display: inline-flex; align-items: center; gap: 0.75rem;
+        padding: 0.875rem 1.5rem;
+        background: var(--maroon);
         color: #fff;
-        box-shadow: 0 12px 32px rgba(159, 45, 49, 0.18);
-    }
-    .article-pdf .icon {
-        font-size: 2rem;
-        width: 3rem; height: 3rem;
-        display: grid; place-items: center;
-        background: rgba(255, 255, 255, 0.12);
-        border-radius: 8px;
-    }
-    .article-pdf .txt { flex: 1; }
-    .article-pdf .txt strong {
-        display: block;
-        font-size: 1.0625rem;
-        font-weight: 700;
-        letter-spacing: -0.005em;
-    }
-    .article-pdf .txt small {
-        display: block;
+        border-radius: 2px;
+        font-family: var(--sans);
         font-size: 0.8125rem;
-        opacity: 0.85;
-        margin-top: 0.25rem;
-    }
-    .article-pdf a.download {
-        padding: 0.75rem 1.375rem;
-        background: var(--gold);
-        color: var(--ink);
-        border-radius: 4px;
+        font-weight: 600;
         text-decoration: none;
-        font-weight: 700;
-        font-size: 0.8125rem;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
-        transition: background 0.2s, transform 0.15s;
-        white-space: nowrap;
+        letter-spacing: 0.14em;
+        transition: background 0.2s;
     }
-    .article-pdf a.download:hover { background: #d0a44a; transform: translateY(-1px); }
+    .pdf-link:hover { background: var(--maroon-dark); }
+    .pdf-link .arrow { font-size: 1.125rem; line-height: 1; }
 
-    /* References */
-    .article-refs pre {
-        white-space: pre-wrap; word-break: break-word;
-        background: var(--panel-warm);
-        border: 1px solid var(--border-soft);
-        padding: 1.5rem 1.75rem;
-        border-radius: 4px;
-        font-family: "Georgia", "Times New Roman", serif;
+    .refs { margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--hair); }
+    .refs ol {
+        margin: 0; padding: 0;
+        counter-reset: ref;
+        list-style: none;
+    }
+    .refs li {
+        counter-increment: ref;
+        padding: 0.375rem 0 0.375rem 2.25rem;
+        position: relative;
+        font-family: var(--serif);
         font-size: 0.9375rem;
-        line-height: 1.85;
-        color: var(--text);
+        line-height: 1.65;
+        color: var(--ink-2);
+    }
+    .refs li::before {
+        content: counter(ref) ".";
+        position: absolute; left: 0; top: 0.375rem;
+        font-family: var(--sans);
+        font-size: 0.75rem;
+        color: var(--muted);
+        font-weight: 600;
+        width: 1.75rem;
+    }
+    .refs pre {
+        white-space: pre-wrap; word-break: break-word;
+        font-family: var(--serif);
+        font-size: 0.9375rem;
+        line-height: 1.7;
+        color: var(--ink-2);
         margin: 0;
     }
 
     /* Footer */
     .site-footer {
-        background: var(--panel-warm);
-        border-top: 1px solid var(--border);
-        padding: 1.75rem 2rem;
-        margin-top: 2rem;
+        border-top: 1px solid var(--hair);
+        padding: 2.25rem 2rem;
+        margin-top: 4rem;
     }
     .footer-inner {
-        max-width: 1400px; margin: 0 auto;
+        max-width: 1180px; margin: 0 auto;
         display: flex; justify-content: space-between; align-items: center;
         flex-wrap: wrap; gap: 1rem;
+        font-family: var(--sans);
+        font-size: 0.75rem;
+        color: var(--muted);
+        letter-spacing: 0.05em;
     }
-    .footer-inner .foot-brand { font-size: 0.75rem; color: var(--muted); letter-spacing: 0.05em; text-transform: uppercase; }
-    .foot-credit { font-size: 0.75rem; color: var(--muted); margin: 0; letter-spacing: 0.04em; }
-    .foot-credit a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
-    .foot-credit a:hover { color: var(--maroon); }
+    .footer-inner a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
+    .footer-inner a:hover { color: var(--maroon); }
 
     @media (max-width: 720px) {
-        body { font-size: 16px; }
-        .article-cover { padding: 2.5rem 1.25rem 2rem; }
-        .article-body { padding: 2rem 1.25rem 3rem; }
-        .article-pdf { flex-direction: column; align-items: flex-start; padding: 1.5rem; }
-        .article-authors { padding: 1.25rem 1.5rem; }
-        .top-nav a { padding: 0 1rem; font-size: 0.75rem; min-height: 52px; }
-        .masthead-strip { padding: 0.875rem 1.25rem; }
+        body { font-size: 18px; }
+        .article { padding: 2.5rem 1.25rem 3rem; }
+        .top-nav a { padding: 0.875rem 0.875rem; font-size: 0.6875rem; letter-spacing: 0.1em; }
+        .top-nav-inner { justify-content: flex-start; overflow-x: auto; }
+        .masthead { padding: 1rem 1.25rem; }
         .site-footer { padding: 1.5rem 1.25rem; }
     }
 `;
@@ -344,41 +373,60 @@ function renderHtml(article) {
         : "";
     const pdfMeta = pdfHref ? `    <meta name="citation_pdf_url" content="${esc(pdfHref)}">` : "";
 
-    const metaParts = [
-        article.journal_year && `${article.journal_year}`,
+    // Eyebrow: JOURNAL · ISSUE · PAGES · YEAR
+    const eyebrowParts = [
+        article.journal_year && String(article.journal_year),
         article.journal_issue && `${article.journal_issue}-son`,
         article.first_page && `${article.first_page}${article.last_page ? "–" + article.last_page : ""}-bet`
     ].filter(Boolean);
-    const metaLine = metaParts.length
-        ? metaParts.map((p, i) => i > 0 ? `<span class="dot">·</span> ${esc(p)}` : esc(p)).join(" ")
+    const eyebrow = eyebrowParts.length
+        ? eyebrowParts.map((p, i) => i > 0 ? `<span class="sep">/</span> ${esc(p)}` : esc(p)).join(" ")
         : "";
 
-    const authorsBlock = authors.length
-        ? `<section class="article-authors">${authors.map((a) => `
-            <div class="author">
-                <strong>${esc(a.name)}</strong>
-                ${a.affiliation ? `<span>${esc(a.affiliation)}</span>` : ""}
-                ${a.orcid ? `<a href="https://orcid.org/${esc(a.orcid)}" target="_blank" rel="noopener">ORCID: ${esc(a.orcid)}</a>` : ""}
-                ${a.email ? `<a href="mailto:${esc(a.email)}">${esc(a.email)}</a>` : ""}
-            </div>`).join("")}</section>` : "";
+    // Byline: "Name (Affiliation) · Name (Affiliation)"
+    const byline = authors.length
+        ? authors.map((a) => {
+            const parts = [`<span class="byline-author">${esc(a.name)}</span>`];
+            if (a.affiliation) parts.push(`<span class="byline-aff">${esc(a.affiliation)}</span>`);
+            return parts.join(", ");
+        }).join(`<span class="byline-sep">·</span>`)
+        : "";
+
+    // Author details: ORCID, email inline in details block
+    const orcidRows = authors.filter(a => a.orcid || a.email).map(a => {
+        const bits = [];
+        if (a.orcid) bits.push(`<a href="https://orcid.org/${esc(a.orcid)}" target="_blank" rel="noopener">ORCID ${esc(a.orcid)}</a>`);
+        if (a.email) bits.push(`<a href="mailto:${esc(a.email)}">${esc(a.email)}</a>`);
+        return `<div class="row"><span class="label">${esc(a.name.split(/\s+/).slice(0, 2).join(" "))}</span>${bits.join(" · ")}</div>`;
+    }).join("");
+
+    const detailsRows = [];
+    if (article.doi) detailsRows.push(`<div class="row"><span class="label">DOI</span><a href="https://doi.org/${esc(article.doi)}" target="_blank" rel="noopener">${esc(article.doi)}</a></div>`);
+    if (article.udk) detailsRows.push(`<div class="row"><span class="label">UDK</span>${esc(article.udk)}</div>`);
+    if (article.language) detailsRows.push(`<div class="row"><span class="label">Til</span>${esc(({ uz: "O'zbek", ru: "Rus", en: "Ingliz", kaa: "Qoraqalpoq" }[article.language]) || article.language)}</div>`);
+    detailsRows.push(...orcidRows.split(/(?=<div class="row")/).filter(Boolean));
 
     const abstractHtml = article.abstract
-        ? `<section class="article-abstract"><h2 class="section-title">Annotatsiya</h2><p>${esc(article.abstract)}</p></section>` : "";
+        ? `<section class="article-section">
+            <h2 class="section-heading">Annotatsiya</h2>
+            <p>${esc(article.abstract)}</p>
+          </section>` : "";
+
     const keywordsHtml = Array.isArray(article.keywords) && article.keywords.length
-        ? `<section class="article-keywords"><h2 class="section-title">Kalit so'zlar</h2><p>${esc(article.keywords.join(" · "))}</p></section>` : "";
+        ? `<section class="article-section">
+            <h2 class="section-heading">Kalit so'zlar</h2>
+            <p class="keywords">${article.keywords.map(k => `<span class="kw">${esc(k)}</span>`).join("")}</p>
+          </section>` : "";
+
     const refsHtml = article.references_list
-        ? `<section class="article-refs"><h2 class="section-title">Foydalanilgan adabiyotlar</h2><pre>${esc(article.references_list)}</pre></section>` : "";
-    const doiHtml = article.doi
-        ? `<p class="article-doi"><strong>DOI:</strong> <a href="https://doi.org/${esc(article.doi)}" target="_blank" rel="noopener">${esc(article.doi)}</a></p>` : "";
-    const pdfBlock = pdfHref ? `
-        <div class="article-pdf">
-            <span class="icon" aria-hidden="true">📄</span>
-            <div class="txt">
-                <strong>To'liq matn PDF formatda</strong>
-                <small>Yangi oynada ochiladi</small>
-            </div>
-            <a class="download" href="${esc(pdfHref)}" target="_blank" rel="noopener">PDF ochish</a>
-        </div>` : "";
+        ? `<section class="refs">
+            <h2 class="section-heading">Foydalanilgan adabiyotlar</h2>
+            <pre>${esc(article.references_list)}</pre>
+          </section>` : "";
+
+    const pdfBlock = pdfHref
+        ? `<a class="pdf-link" href="${esc(pdfHref)}" target="_blank" rel="noopener">To'liq matn (PDF) <span class="arrow">→</span></a>`
+        : "";
 
     return `<!DOCTYPE html>
 <html lang="${esc(article.language || "uz")}">
@@ -424,19 +472,20 @@ ${keywordsMeta}
     <link rel="icon" href="/assets/logo.png">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>${STYLES}</style>
 </head>
 <body>
-    <header class="masthead-strip">
+    <header class="masthead">
         <div class="masthead-inner">
             <a href="/" class="brand">
                 <img src="/assets/logo.png" alt="">
                 <span>
                     <span class="brand-title">${esc(JOURNAL_TITLE_SHORT)}</span>
-                    <span class="brand-sub">ISSN ${ISSN} · OAK ro'yxatida</span>
+                    <span class="brand-sub">${esc(JOURNAL_TITLE)}</span>
                 </span>
             </a>
+            <span class="masthead-meta">ISSN ${ISSN}</span>
         </div>
     </header>
 
@@ -450,34 +499,40 @@ ${keywordsMeta}
         </div>
     </nav>
 
-    <section class="article-cover">
-        <div class="article-cover-inner">
-            <nav class="breadcrumb" aria-label="Breadcrumb">
-                <a href="/">Asosiy sahifa</a>
-                <span class="sep">/</span>
-                <a href="/maqola">Maqolalar</a>
-                <span class="sep">/</span>
-                <strong>Maqola</strong>
-            </nav>
-            ${metaLine ? `<div class="meta-line">${metaLine}</div>` : ""}
-            <h1 class="article-title">${esc(article.title)}</h1>
-            ${article.rubric ? `<span class="rubric-tag">${esc(article.rubric)}</span>` : ""}
-        </div>
-    </section>
+    <article class="article">
+        <nav class="breadcrumb" aria-label="Breadcrumb">
+            <a href="/">Asosiy sahifa</a>
+            <span class="sep">/</span>
+            <a href="/maqola">Maqolalar</a>
+            <span class="sep">/</span>
+            <strong>Maqola</strong>
+        </nav>
 
-    <main class="article-body">
-        ${authorsBlock}
-        ${doiHtml}
-        ${abstractHtml}
-        ${keywordsHtml}
+        ${eyebrow ? `<div class="article-eyebrow">${eyebrow}</div>` : ""}
+
+        <h1 class="article-title">${esc(article.title)}</h1>
+
+        ${byline ? `<p class="byline">${byline}</p>` : ""}
+
+        ${article.rubric ? `<p class="rubric-line"><strong>Rubrika:</strong> ${esc(article.rubric)}</p>` : ""}
+
+        ${article.abstract ? `<p class="lead">${esc(article.abstract.slice(0, 260))}${article.abstract.length > 260 ? "…" : ""}</p>` : ""}
+
         ${pdfBlock}
+
+        ${abstractHtml}
+
+        ${keywordsHtml}
+
+        ${detailsRows.length ? `<div class="details-line">${detailsRows.join("")}</div>` : ""}
+
         ${refsHtml}
-    </main>
+    </article>
 
     <footer class="site-footer">
         <div class="footer-inner">
-            <span class="foot-brand">© ${esc(PUBLISHER)}</span>
-            <p class="foot-credit">Designed &amp; developed by <a href="https://teiior.uz" target="_blank" rel="noopener noreferrer">teiior</a></p>
+            <span>© ${esc(PUBLISHER)}</span>
+            <span>Designed &amp; developed by <a href="https://teiior.uz" target="_blank" rel="noopener noreferrer">teiior</a></span>
         </div>
     </footer>
 </body>
@@ -505,7 +560,7 @@ export default async function handler(req, res) {
     }
     if (!data) {
         res.status(404).setHeader("Content-Type", "text/html; charset=utf-8").send(
-            `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Maqola topilmadi — ${JOURNAL_TITLE_SHORT}</title></head><body style="font-family:Montserrat,system-ui;max-width:600px;margin:60px auto;padding:24px;text-align:center;"><h1 style="color:#9f2d31;">Maqola topilmadi</h1><p><a href="/maqola" style="color:#9f2d31;">Barcha maqolalar</a> · <a href="/" style="color:#9f2d31;">Bosh sahifa</a></p></body></html>`
+            `<!DOCTYPE html><html><head><meta charset="UTF-8"><title>Maqola topilmadi — ${JOURNAL_TITLE_SHORT}</title></head><body style="font-family:Georgia,serif;max-width:600px;margin:80px auto;padding:24px;text-align:center;background:#fdfaf3;"><h1 style="color:#8a2226;font-weight:600;">Maqola topilmadi</h1><p><a href="/maqola" style="color:#8a2226;">Barcha maqolalar</a> · <a href="/" style="color:#8a2226;">Bosh sahifa</a></p></body></html>`
         );
         return;
     }
