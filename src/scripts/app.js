@@ -32,6 +32,7 @@ const viewerCurrentIssue = document.getElementById("viewer-current-issue");
 
 // All published issues, newest first.
 const JOURNAL_ISSUES = [
+    { year: 2026, issue: 2 },
     { year: 2026, issue: 1 },
     { year: 2025, issue: 4 },
     { year: 2025, issue: 3 },
@@ -161,7 +162,7 @@ const translations = {
         editorThree: "Jurnalning mas'ul kotibi",
         editorFour: "Jurnal sahifalovchi dizayneri",
         sideCurrentIssue: "Joriy son",
-        sideIssueText: "1-son",
+        sideIssueText: "2-son",
         sideIssueDate: "2026-yil",
         sideIssueArticles: "To'liq matn PDF formatda",
         sideIssueTheme: "San'at, madaniyat va pedagogika",
@@ -275,7 +276,7 @@ const translations = {
         editorThree: "Ответственный секретарь журнала",
         editorFour: "Дизайнер-вёрстка журнала",
         sideCurrentIssue: "Текущий выпуск",
-        sideIssueText: "Выпуск № 1",
+        sideIssueText: "Выпуск № 2",
         sideIssueDate: "2026 год",
         sideIssueArticles: "Полный текст в PDF",
         sideIssueTheme: "Искусство, культура и педагогика",
@@ -388,7 +389,7 @@ const translations = {
         editorThree: "Executive Secretary of the journal",
         editorFour: "Layout Designer of the journal",
         sideCurrentIssue: "Current issue",
-        sideIssueText: "Issue No. 1",
+        sideIssueText: "Issue No. 2",
         sideIssueDate: "2026",
         sideIssueArticles: "Full text in PDF",
         sideIssueTheme: "Arts, culture and pedagogy",
